@@ -8,8 +8,8 @@
 
     <LinearLayout
         android:id="@+id/LinearLayout_Header"
-        android:layout_width="428dp"
-        android:layout_height="73dp"
+        android:layout_width="414dp"
+        android:layout_height="71dp"
         android:background="#3F51B5"
         android:gravity="center"
         android:orientation="vertical"
@@ -44,18 +44,18 @@
                 android:contentDescription="@string/more_icon_description"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.789"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/textView_header"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.488"
+                app:layout_constraintVertical_bias="0.487"
                 app:srcCompat="@drawable/menu" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/LinearLayout_Body"
-        android:layout_width="425dp"
-        android:layout_height="641dp"
+        android:layout_width="414dp"
+        android:layout_height="580dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,15 +69,16 @@
 
             <ImageView
                 android:id="@+id/imageView_upload_icon"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:contentDescription="@string/upload_icon_description"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.237" />
+                app:layout_constraintVertical_bias="0.312"
+                app:srcCompat="@drawable/DescriptiveFluidFrogmouth_small" />
 
             <TextView
                 android:id="@+id/UploadMessage"
