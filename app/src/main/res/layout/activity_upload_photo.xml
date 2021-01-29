@@ -8,8 +8,8 @@
 
     <LinearLayout
         android:id="@+id/LinearLayout_Header"
-        android:layout_width="428dp"
-        android:layout_height="73dp"
+        android:layout_width="412dp"
+        android:layout_height="71dp"
         android:background="#3F51B5"
         android:gravity="center"
         android:orientation="vertical"
@@ -44,10 +44,10 @@
                 android:contentDescription="@string/more_icon_description"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.789"
+                app:layout_constraintHorizontal_bias="0.955"
                 app:layout_constraintStart_toEndOf="@+id/textView_header"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.488"
+                app:layout_constraintVertical_bias="0.487"
                 app:srcCompat="@drawable/menu" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
