@@ -8,9 +8,9 @@
 
     <LinearLayout
         android:id="@+id/LinearLayout_Header"
-        android:layout_width="412dp"
+        android:layout_width="match_parent"
         android:layout_height="71dp"
-        android:background="#3F51B5"
+        android:background="@color/header_color"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
