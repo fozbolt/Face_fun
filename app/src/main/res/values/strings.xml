@@ -4,6 +4,8 @@
     <string name="more_icon_description">Click to see more info</string>
     <string name="upload_icon_description">Click to upload picture</string>
     <string name="upload_message_face_swap">Click to upload first picture</string>
+    <string name="upload_message_face_swap2">Click to upload second picture</string>
+    <string name="upload_message_universal">Click to upload picture</string>
     <string name="button_gallery">Click to open gallery</string>
     <string name="button_take_photo">Click to take new photo</string>
     <string name="button_next">Click to proceed</string>
