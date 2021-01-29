@@ -10,7 +10,6 @@
         android:id="@+id/LinearLayout_Header"
         android:layout_width="415dp"
         android:layout_height="70dp"
-        android:background="#3F51B5"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +20,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ConstraintLayout_Header"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#3F51B5">
 
             <TextView
                 android:id="@+id/textView_header"
@@ -71,6 +71,7 @@
                 android:id="@+id/imageView_upload_icon"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
+                android:background="@drawable/upload_image_icon"
                 android:contentDescription="@string/upload_icon_description"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +82,7 @@
                 tools:srcCompat="@drawable/upload_image_icon" />
 
             <TextView
-                android:id="@+id/UploadMessage"
+                android:id="@+id/WarningMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -97,9 +98,8 @@
 
     <LinearLayout
         android:id="@+id/LinearLayout_Footer"
-        android:layout_width="426dp"
-        android:layout_height="81dp"
-        android:background="#B1AEAC"
+        android:layout_width="420dp"
+        android:layout_height="71dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -115,11 +115,11 @@
 
             <ImageButton
                 android:id="@+id/button_gallery"
-                android:layout_width="56dp"
-                android:layout_height="57dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/_484211441606988091_128"
+                android:background="@drawable/f_484211441606988091_128"
                 android:contentDescription="@string/button_gallery"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/button_take_photo"
@@ -129,9 +129,9 @@
 
             <ImageButton
                 android:id="@+id/button_take_photo"
-                android:layout_width="107dp"
-                android:layout_height="97dp"
-                android:background="@drawable/_689683021530273512_128"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
+                android:background="@drawable/ca_689683021530273512_128"
                 android:contentDescription="@string/button_take_photo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -141,12 +141,13 @@
 
             <ImageButton
                 android:id="@+id/button_next"
-                android:layout_width="56dp"
-                android:layout_height="57dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/_6537366261580817585_128"
+                android:background="@drawable/asda_6537366261580817585_128"
                 android:contentDescription="@string/button_next"
+                android:onClick="LaunchResultPage"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.751"
