@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Face fun</string>
+    <string name="app_name_header">Face fun</string>
+    <string name="more_icon_description">Click to see more info</string>
+    <string name="upload_icon_description">Click to upload picture</string>
+    <string name="upload_message_face_swap">Click to upload first picture</string>
+    <string name="button_gallery">Click to open gallery</string>
+    <string name="button_take_photo">Click to take new photo</string>
+    <string name="button_next">Click to proceed</string>
+</resources>
