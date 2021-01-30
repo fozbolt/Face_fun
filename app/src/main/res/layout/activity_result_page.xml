@@ -67,24 +67,20 @@
             android:layout_height="match_parent"
             android:background="#FFFFFF">
 
-            <ImageView
-                android:id="@+id/imageView_upload_icon"
+            <!-- https://www.taimoorsikander.com/how-to-add-a-gif-image-in-android-studio-example/ -->
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/gifImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/upload_icon_description"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                android:layout_marginTop="56dp"
+                android:src="@drawable/not_found"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.312"
-                app:srcCompat="@drawable/not_found" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/WarningMessage"
                 android:layout_width="300dp"
-                android:layout_height="59dp"
-                android:layout_marginTop="8dp"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/chewy_regular"
                 android:gravity="center"
                 android:maxLines="2"
@@ -92,8 +88,10 @@
                 android:textColor="#47525E"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_upload_icon" />
+                app:layout_constraintTop_toBottomOf="@+id/gifImageView" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
@@ -120,7 +118,7 @@
                 android:layout_height="50dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/cycx"
+                android:background="@drawable/return_button_icon"
                 android:contentDescription="@string/button_gallery"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/button_take_photo"
@@ -132,7 +130,7 @@
                 android:id="@+id/button_take_photo"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="@drawable/dfgdf"
+                android:background="@drawable/download_icon"
                 android:contentDescription="@string/button_take_photo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

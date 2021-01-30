@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/take_picture_icon"
     tools:context=".UploadPhoto">
 
     <LinearLayout
@@ -93,6 +94,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView_upload_icon" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="121dp"
+                android:layout_height="106dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/WarningMessage"
+                app:layout_constraintVertical_bias="0.186"
+                tools:src="@mipmap/ic_launcher" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
@@ -119,7 +133,7 @@
                 android:layout_height="50dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/f_484211441606988091_128"
+                android:background="@drawable/gallery_icon"
                 android:contentDescription="@string/button_gallery"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/button_take_photo"
@@ -127,11 +141,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
             <ImageButton
                 android:id="@+id/button_take_photo"
                 android:layout_width="100dp"
                 android:layout_height="90dp"
-                android:background="@drawable/ca_689683021530273512_128"
+                android:background="@drawable/take_picture_icon"
                 android:contentDescription="@string/button_take_photo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
