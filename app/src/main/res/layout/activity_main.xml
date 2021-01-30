@@ -22,7 +22,7 @@
             android:id="@+id/ConstraintLayout_Header"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/header_color">
+            android:background="#3F51B5">
 
             <TextView
                 android:id="@+id/textView_header"
@@ -53,277 +53,426 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="661dp"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LinearLayout_Header"
         app:layout_constraintVertical_bias="0.0">
 
-        <LinearLayout
-            android:id="@+id/LinearLayout_face_sawp"
-            android:layout_width="match_parent"
-            android:layout_height="146dp"
-            android:layout_marginTop="20dp"
-            android:onClick="launchPhotoUpload"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/LinearLayout_Header">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/ConstraintLayout_face_swap"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/face_sawp_image"
-                    android:layout_width="150dp"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/main_menu_pictures"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/picture_face_sawp" />
-
-                <TextView
-                    android:id="@+id/face_sawp_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center"
-                    android:fontFamily="@font/chewy_regular"
-                    android:text="@string/title_face_sawp"
-                    android:textColor="@color/text_color"
-                    android:textSize="26sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.525"
-                    app:layout_constraintStart_toEndOf="@+id/face_sawp_image"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.142" />
-
-                <TextView
-                    android:id="@+id/face_swap_text"
-                    android:layout_width="228dp"
-                    android:layout_height="52dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/chewy_regular"
-                    android:gravity="center"
-                    android:maxLines="2"
-                    android:text="@string/test_text"
-                    android:textColor="@color/text_color"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/face_sawp_image"
-                    app:layout_constraintTop_toBottomOf="@+id/face_sawp_title" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/LinearLayout_age_detection"
-            android:layout_width="match_parent"
-            android:layout_height="146dp"
-            android:layout_marginTop="10dp"
-            android:onClick="launchPhotoUpload"
+            android:layout_width="wrap_content"
+            android:layout_height="661dp"
             android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.461"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/LinearLayout_face_sawp">
+            app:layout_constraintTop_toBottomOf="@+id/LinearLayout_Header"
+            app:layout_constraintVertical_bias="0.0">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/ConstraintLayout_age_detecion"
+            <LinearLayout
+                android:id="@+id/LinearLayout_face_sawp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="146dp"
+                android:layout_marginTop="20dp"
+                android:onClick="launchPhotoUpload"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LinearLayout_Header">
 
-                <TextView
-                    android:id="@+id/age_detection_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center"
-                    android:fontFamily="@font/chewy_regular"
-                    android:text="@string/title_age_detection"
-                    android:textColor="@color/text_color"
-                    android:textSize="26sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.525"
-                    app:layout_constraintStart_toEndOf="@+id/age_detection_image"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.142" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ConstraintLayout_face_swap"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/age_detection_image"
-                    android:layout_width="150dp"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/main_menu_pictures"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/picture_face_sawp" />
+                    <ImageView
+                        android:id="@+id/face_sawp_image"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/main_menu_pictures"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/faceswap2" />
 
-                <TextView
-                    android:id="@+id/age_detection_text"
-                    android:layout_width="228dp"
-                    android:layout_height="52dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/chewy_regular"
-                    android:gravity="center"
-                    android:maxLines="2"
-                    android:text="@string/test_text"
-                    android:textColor="@color/text_color"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/age_detection_image"
-                    app:layout_constraintTop_toBottomOf="@+id/age_detection_title" />
+                    <TextView
+                        android:id="@+id/face_sawp_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center"
+                        android:fontFamily="@font/chewy_regular"
+                        android:text="@string/title_face_sawp"
+                        android:textColor="@color/text_color"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.525"
+                        app:layout_constraintStart_toEndOf="@+id/face_sawp_image"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.142" />
+
+                    <TextView
+                        android:id="@+id/face_swap_text"
+                        android:layout_width="228dp"
+                        android:layout_height="52dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/chewy_regular"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="@string/test_text"
+                        android:textColor="@color/text_color"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/face_sawp_image"
+                        app:layout_constraintTop_toBottomOf="@+id/face_sawp_title" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout_age_detection"
+                android:layout_width="match_parent"
+                android:layout_height="146dp"
+                android:layout_marginTop="10dp"
+                android:onClick="launchPhotoUpload"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LinearLayout_face_sawp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ConstraintLayout_age_detecion"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/age_detection_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center"
+                        android:fontFamily="@font/chewy_regular"
+                        android:text="@string/title_age_detection"
+                        android:textColor="@color/text_color"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.525"
+                        app:layout_constraintStart_toEndOf="@+id/age_detection_image"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.142" />
+
+                    <ImageView
+                        android:id="@+id/age_detection_image"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/main_menu_pictures"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/age_detection" />
+
+                    <TextView
+                        android:id="@+id/age_detection_text"
+                        android:layout_width="228dp"
+                        android:layout_height="52dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/chewy_regular"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="@string/test_text"
+                        android:textColor="@color/text_color"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/age_detection_image"
+                        app:layout_constraintTop_toBottomOf="@+id/age_detection_title" />
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout_celeb_fr"
+                android:layout_width="match_parent"
+                android:layout_height="146dp"
+                android:layout_marginTop="10dp"
+                android:onClick="launchPhotoUpload"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LinearLayout_age_detection">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ConstraintLayout_celeb_fr"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/celeb_fr_image"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/main_menu_pictures"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/pit" />
+
+                    <TextView
+                        android:id="@+id/celeb_fr_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center"
+                        android:fontFamily="@font/chewy_regular"
+                        android:text="@string/title_celeb_fr"
+                        android:textColor="@color/text_color"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.525"
+                        app:layout_constraintStart_toEndOf="@+id/celeb_fr_image"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.142" />
+
+                    <TextView
+                        android:id="@+id/celeb_fr_text"
+                        android:layout_width="228dp"
+                        android:layout_height="52dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/chewy_regular"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="@string/test_text"
+                        android:textColor="@color/text_color"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.6"
+                        app:layout_constraintStart_toEndOf="@+id/celeb_fr_image"
+                        app:layout_constraintTop_toBottomOf="@+id/celeb_fr_title"
+                        app:layout_constraintVertical_bias="0.441" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout_celeb_lookalike"
+                android:layout_width="match_parent"
+                android:layout_height="146dp"
+                android:layout_marginTop="10dp"
+                android:onClick="launchPhotoUpload"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LinearLayout_celeb_fr">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ConstraintLayout_celeb_lookalike"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/celeb_lookalike_picture"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/main_menu_pictures"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/celeb_look_alike" />
+
+                    <TextView
+                        android:id="@+id/gallery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center"
+                        android:fontFamily="@font/chewy_regular"
+                        android:text="@string/title_celeb_lookalike"
+                        android:textColor="@color/text_color"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.525"
+                        app:layout_constraintStart_toEndOf="@+id/celeb_lookalike_picture"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.142" />
+
+                    <TextView
+                        android:id="@+id/celeb_lookalike_text"
+                        android:layout_width="228dp"
+                        android:layout_height="52dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/chewy_regular"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="@string/test_text"
+                        android:textColor="@color/text_color"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.6"
+                        app:layout_constraintStart_toEndOf="@+id/celeb_lookalike_picture"
+                        app:layout_constraintTop_toBottomOf="@+id/gallery"
+                        app:layout_constraintVertical_bias="0.441" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/LinearLayout_gallery"
+                android:layout_width="match_parent"
+                android:layout_height="146dp"
+                android:layout_marginTop="10dp"
+                android:onClick="launchPhotoUpload"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LinearLayout_celeb_fr">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ConstraintLayout_gallery"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/gallery_picture"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/main_menu_pictures"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/images" />
+
+                    <TextView
+                        android:id="@+id/gallery_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center"
+                        android:fontFamily="@font/chewy_regular"
+                        android:text="@string/gallery"
+                        android:textColor="@color/text_color"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.525"
+                        app:layout_constraintStart_toEndOf="@+id/gallery_picture"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.142" />
+
+                    <TextView
+                        android:id="@+id/gallery_description"
+                        android:layout_width="228dp"
+                        android:layout_height="52dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/chewy_regular"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="@string/test_text"
+                        android:textColor="@color/text_color"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.6"
+                        app:layout_constraintStart_toEndOf="@+id/gallery_picture"
+                        app:layout_constraintTop_toBottomOf="@id/gallery_header"
+                        app:layout_constraintVertical_bias="0.441" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/LinearLayout_my_favorites"
+                android:layout_width="match_parent"
+                android:layout_height="146dp"
+                android:layout_marginTop="10dp"
+                android:onClick="launchPhotoUpload"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LinearLayout_celeb_fr">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ConstraintLayout_my_favorites"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/my_favorites_picture"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/main_menu_pictures"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/my_favorites" />
+
+                    <TextView
+                        android:id="@+id/my_favorites_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center"
+                        android:fontFamily="@font/chewy_regular"
+                        android:text="@string/favorites"
+                        android:textColor="@color/text_color"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.525"
+                        app:layout_constraintStart_toEndOf="@+id/my_favorites_picture"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.142" />
+
+                    <TextView
+                        android:id="@+id/my_favorites_description"
+                        android:layout_width="228dp"
+                        android:layout_height="52dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/chewy_regular"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="@string/test_text"
+                        android:textColor="@color/text_color"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.6"
+                        app:layout_constraintStart_toEndOf="@+id/my_favorites_picture"
+                        app:layout_constraintTop_toBottomOf="@id/my_favorites_header"
+                        app:layout_constraintVertical_bias="0.441" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/LinearLayout_celeb_fr"
-            android:layout_width="match_parent"
-            android:layout_height="146dp"
-            android:layout_marginTop="10dp"
-            android:onClick="launchPhotoUpload"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/LinearLayout_age_detection">
+    </ScrollView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/ConstraintLayout_celeb_fr"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/celeb_fr_image"
-                    android:layout_width="150dp"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/main_menu_pictures"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/picture_face_sawp" />
-
-                <TextView
-                    android:id="@+id/celeb_fr_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center"
-                    android:fontFamily="@font/chewy_regular"
-                    android:text="@string/title_celeb_fr"
-                    android:textColor="@color/text_color"
-                    android:textSize="26sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.525"
-                    app:layout_constraintStart_toEndOf="@+id/celeb_fr_image"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.142" />
-
-                <TextView
-                    android:id="@+id/celeb_fr_text"
-                    android:layout_width="228dp"
-                    android:layout_height="52dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/chewy_regular"
-                    android:gravity="center"
-                    android:maxLines="2"
-                    android:text="@string/test_text"
-                    android:textColor="@color/text_color"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.6"
-                    app:layout_constraintStart_toEndOf="@+id/celeb_fr_image"
-                    app:layout_constraintTop_toBottomOf="@+id/celeb_fr_title"
-                    app:layout_constraintVertical_bias="0.441" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/LinearLayout_celeb_lookalike"
-            android:layout_width="match_parent"
-            android:layout_height="146dp"
-            android:layout_marginTop="10dp"
-            android:onClick="launchPhotoUpload"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/LinearLayout_celeb_fr">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/ConstraintLayout_celeb_lookalike"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/celeb_lookalike_picture"
-                    android:layout_width="150dp"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/main_menu_pictures"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/picture_face_sawp" />
-
-                <TextView
-                    android:id="@+id/celeb_lookalike_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center"
-                    android:fontFamily="@font/chewy_regular"
-                    android:text="@string/title_celeb_lookalike"
-                    android:textColor="@color/text_color"
-                    android:textSize="26sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.525"
-                    app:layout_constraintStart_toEndOf="@+id/celeb_lookalike_picture"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.142" />
-
-                <TextView
-                    android:id="@+id/celeb_lookalike_text"
-                    android:layout_width="228dp"
-                    android:layout_height="52dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/chewy_regular"
-                    android:gravity="center"
-                    android:maxLines="2"
-                    android:text="@string/test_text"
-                    android:textColor="@color/text_color"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.6"
-                    app:layout_constraintStart_toEndOf="@+id/celeb_lookalike_picture"
-                    app:layout_constraintTop_toBottomOf="@+id/celeb_lookalike_title"
-                    app:layout_constraintVertical_bias="0.441" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </LinearLayout>
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

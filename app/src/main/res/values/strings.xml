@@ -13,8 +13,10 @@
     <string name="title_face_sawp">Face swap</string>
     <string name="title_age_detection">Age detection</string>
     <string name="title_celeb_fr">Celeb face recognition</string>
-    <string name="title_celeb_lookalike">Your celeb lookalike</string>
+    <string name="title_celeb_lookalike">Your celeb look alike</string>
     <string name="test_text">Opis ove slike ide ovdje nesto kratkog tolko da je</string>
     <string name="upload_warning_message">Image upload failed. Something is wrong with image.</string>
+    <string name="gallery">Gallery</string>
+    <string name="favorites">My Favorites</string>
 
 </resources>
