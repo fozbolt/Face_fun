@@ -83,8 +83,9 @@
             <LinearLayout
                 android:id="@+id/LinearLayout_face_sawp"
                 android:layout_width="match_parent"
-                android:layout_height="146dp"
+                android:layout_height="120dp"
                 android:layout_marginTop="20dp"
+                android:background="#F8F9F9"
                 android:onClick="launchPhotoUpload"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -101,12 +102,12 @@
                         android:id="@+id/face_sawp_image"
                         android:layout_width="150dp"
                         android:layout_height="match_parent"
+                        android:background="@drawable/face_swap"
                         android:contentDescription="@string/main_menu_pictures"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0"
-                        app:srcCompat="@drawable/face_swap" />
+                        app:layout_constraintVertical_bias="0.0" />
 
                     <TextView
                         android:id="@+id/face_sawp_title"
@@ -148,8 +149,9 @@
             <LinearLayout
                 android:id="@+id/LinearLayout_age_detection"
                 android:layout_width="match_parent"
-                android:layout_height="146dp"
+                android:layout_height="120dp"
                 android:layout_marginTop="10dp"
+                android:background="#F8F9F9"
                 android:onClick="launchPhotoUpload"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -181,12 +183,12 @@
                         android:id="@+id/age_detection_image"
                         android:layout_width="150dp"
                         android:layout_height="match_parent"
+                        android:background="@drawable/age_detection"
                         android:contentDescription="@string/main_menu_pictures"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0"
-                        app:srcCompat="@drawable/age_detection" />
+                        app:layout_constraintVertical_bias="0.0" />
 
                     <TextView
                         android:id="@+id/age_detection_text"
@@ -213,8 +215,9 @@
             <LinearLayout
                 android:id="@+id/LinearLayout_celeb_fr"
                 android:layout_width="match_parent"
-                android:layout_height="146dp"
+                android:layout_height="120dp"
                 android:layout_marginTop="10dp"
+                android:background="#F8F9F9"
                 android:onClick="launchPhotoUpload"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -230,12 +233,12 @@
                         android:id="@+id/celeb_fr_image"
                         android:layout_width="150dp"
                         android:layout_height="match_parent"
+                        android:background="@drawable/celebrity_face_recognition"
                         android:contentDescription="@string/main_menu_pictures"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0"
-                        app:srcCompat="@drawable/celebrity_face_recognition" />
+                        app:layout_constraintVertical_bias="0.0" />
 
                     <TextView
                         android:id="@+id/celeb_fr_title"
@@ -278,8 +281,9 @@
             <LinearLayout
                 android:id="@+id/LinearLayout_celeb_lookalike"
                 android:layout_width="match_parent"
-                android:layout_height="146dp"
+                android:layout_height="120dp"
                 android:layout_marginTop="10dp"
+                android:background="#F8F9F9"
                 android:onClick="launchPhotoUpload"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -295,12 +299,12 @@
                         android:id="@+id/celeb_lookalike_picture"
                         android:layout_width="150dp"
                         android:layout_height="match_parent"
+                        android:background="@drawable/celeb_look_alike"
                         android:contentDescription="@string/main_menu_pictures"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0"
-                        app:srcCompat="@drawable/celeb_look_alike" />
+                        app:layout_constraintVertical_bias="0.0" />
 
                     <TextView
                         android:id="@+id/gallery"
@@ -344,9 +348,10 @@
             <LinearLayout
                 android:id="@+id/LinearLayout_gallery"
                 android:layout_width="match_parent"
-                android:layout_height="146dp"
+                android:layout_height="120dp"
                 android:layout_marginTop="10dp"
-                android:onClick="launchPhotoUpload"
+                android:background="#F8F9F9"
+                android:onClick="launchGallery"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -361,12 +366,12 @@
                         android:id="@+id/gallery_picture"
                         android:layout_width="150dp"
                         android:layout_height="match_parent"
+                        android:background="@drawable/gallery"
                         android:contentDescription="@string/main_menu_pictures"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0"
-                        app:srcCompat="@drawable/gallery" />
+                        app:layout_constraintVertical_bias="0.0" />
 
                     <TextView
                         android:id="@+id/gallery_header"
@@ -410,8 +415,9 @@
             <LinearLayout
                 android:id="@+id/LinearLayout_my_favorites"
                 android:layout_width="match_parent"
-                android:layout_height="146dp"
+                android:layout_height="120dp"
                 android:layout_marginTop="10dp"
+                android:background="#F8F9F9"
                 android:onClick="launchPhotoUpload"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -427,12 +433,12 @@
                         android:id="@+id/my_favorites_picture"
                         android:layout_width="150dp"
                         android:layout_height="match_parent"
+                        android:background="@drawable/my_favorites"
                         android:contentDescription="@string/main_menu_pictures"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0"
-                        app:srcCompat="@drawable/my_favorites" />
+                        app:layout_constraintVertical_bias="0.0" />
 
                     <TextView
                         android:id="@+id/my_favorites_header"

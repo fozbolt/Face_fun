@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void launchPhotoUpload(View v){
         Intent i = new Intent(this, UploadPhoto.class);
+        startActivity(i);
+    }
+    public void launchGallery(View v){
+        Intent i = new Intent(this, GalleryPage.class);
         startActivity(i);
     }
 }

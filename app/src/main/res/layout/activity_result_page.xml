@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:id="@+id/LinearLayout_Header"
-        android:layout_width="414dp"
+        android:layout_width="match_parent"
         android:layout_height="71dp"
         android:gravity="center"
         android:orientation="vertical"
@@ -54,7 +54,7 @@
 
     <LinearLayout
         android:id="@+id/LinearLayout_Body"
-        android:layout_width="411dp"
+        android:layout_width="match_parent"
         android:layout_height="587dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,7 +97,7 @@
 
     <LinearLayout
         android:id="@+id/LinearLayout_Footer"
-        android:layout_width="420dp"
+        android:layout_width="match_parent"
         android:layout_height="71dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
