@@ -25,8 +25,24 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
     public void launchPhotoUpload(View v){
+        View swap = findViewById(R.id.LinearLayout_face_swap);
+        View age = findViewById(R.id.LinearLayout_age_detection);
+        View celeb = findViewById(R.id.LinearLayout_celeb_fr);
+        View lookalike = findViewById(R.id.LinearLayout_celeb_lookalike);
+
+        String activity = "";
+        if (v.getId() == swap.getId())   activity = "face_swap";
+        else if (v.getId() == age.getId())   activity= "age_detection";
+        else if (v.getId() == celeb.getId())  activity= "celeb_fr";
+        else if (v.getId() == lookalike.getId())  activity= "celeb_lookalike";
+
+
         Intent i = new Intent(this, UploadPhoto.class);
+        i.putExtra("activity", activity);
         startActivity(i);
     }
+
 }
