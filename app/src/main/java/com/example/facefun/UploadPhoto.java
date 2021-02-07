@@ -126,7 +126,6 @@ public class UploadPhoto extends AppCompatActivity {
 
 
 
-
     //za novije verzije kao što su API 23 +, ANDROID 6.0 +
     public void EnableRuntimePermission(){
 
