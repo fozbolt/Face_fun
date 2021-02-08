@@ -14,8 +14,7 @@ import java.io.InputStream;
 
 public class ImageAdapter extends BaseAdapter {
     private Context context;
-    private String[] list;
-    private Integer slike;
+    public String[] list;
 
     public ImageAdapter(Context c){
         context = c;
@@ -51,7 +50,6 @@ public class ImageAdapter extends BaseAdapter {
             Bitmap bitmap = BitmapFactory.decodeStream(ims);
             img.setImageBitmap(bitmap);
         } catch (IOException e){ e.printStackTrace(); }
-
         return img;
     }
 }
