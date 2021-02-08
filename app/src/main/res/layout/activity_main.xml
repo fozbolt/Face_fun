@@ -81,7 +81,7 @@
             app:layout_constraintVertical_bias="0.0">
 
             <LinearLayout
-                android:id="@+id/LinearLayout_face_sawp"
+                android:id="@+id/LinearLayout_face_swap"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:layout_marginTop="20dp"
@@ -156,7 +156,7 @@
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/LinearLayout_face_sawp">
+                app:layout_constraintTop_toBottomOf="@+id/LinearLayout_face_swap">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/ConstraintLayout_age_detecion"
