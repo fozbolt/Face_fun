@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".GalleryPage" />
+        <activity android:name=".FullScreenImageActivity" />
         <activity android:name=".ResultPage" />
         <activity android:name=".UploadPhoto" />
         <activity
