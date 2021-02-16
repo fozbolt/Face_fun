@@ -22,6 +22,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chaquo.python.PyObject;
+import com.chaquo.python.Python;
+import com.chaquo.python.android.AndroidPlatform;
+
 import org.w3c.dom.Text;
 
 import java.io.File;
@@ -118,6 +122,24 @@ public class UploadPhoto extends AppCompatActivity {
     public void LaunchResultPage(View v){
 
         //nekako jos staviti da tu returna rezultat i salje ga u sljedeci intent
+
+        // "context" must be an Activity, Service or Application object from your app.
+        //startanje pythona
+        if (!Python.isStarted()) {
+            Python.start(new AndroidPlatform(this));
+
+            //stvaranje python instance
+            Python py = Python.getInstance();
+            //stvaranje python objekta
+            PyObject pyobj = py.getModule("test"); //davanje imena python skripti
+
+            PyObject obj = pyobj.callAttr("main");
+
+            System.out.println(obj);
+
+        }
+
+
         processImage();
 
         Intent i = new Intent(this, ResultPage.class);
