@@ -12,6 +12,7 @@
     <string name="button_take_photo">Click to take new photo</string>
     <string name="button_next">Click to proceed</string>
     <string name="main_menu_pictures">Picture not loaded</string>
+    <string name="gallery_full_picture">Your Picture is not Loaded</string>
     <string name="title_face_sawp">Face swap</string>
     <string name="title_age_detection">Age detection</string>
     <string name="title_celeb_fr">Celeb face recognition</string>
