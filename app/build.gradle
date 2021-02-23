@@ -23,6 +23,14 @@ android {
 
         python {
             buildPython "C:/Windows/py.exe", "-3.8"
+            pip{
+                install "git+https://github.com/rcmalli/keras-vggface.git"
+                install "Keras-Applications"
+                install "numpy"
+                install "Pillow"
+                install "opencv-python"
+                install "tensorflow"
+            }
         }
 
         sourceSets {

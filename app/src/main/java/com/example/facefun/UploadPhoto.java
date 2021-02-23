@@ -28,6 +28,7 @@ import com.chaquo.python.android.AndroidPlatform;
 
 import org.w3c.dom.Text;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -38,12 +39,12 @@ public class UploadPhoto extends AppCompatActivity {
     public static final int  LOAD_IMAGE_REQUEST = 1;
     private static final int TAKE_PICTURE_REQUEST = 2;
     public  static final int PERMISSION_CODE_REQUEST  = 3 ;
+    public static byte[] picture;
     ImageButton imageButton ;
     ImageView imageView ;
     Intent intent ;
     Intent i;
     String choice;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,7 +134,8 @@ public class UploadPhoto extends AppCompatActivity {
             //stvaranje python objekta
             PyObject pyobj = py.getModule("test"); //davanje imena python skripti
 
-            PyObject obj = pyobj.callAttr("main");
+            PyObject upload_image = PyObject.fromJava(picture); // boze koji jesi pomozi
+            PyObject obj = pyobj.callAttr("main", upload_image);
 
             System.out.println(obj);
 
@@ -194,6 +196,13 @@ public class UploadPhoto extends AppCompatActivity {
         if (requestCode == TAKE_PICTURE_REQUEST && resultCode == RESULT_OK){
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
 
+            //konverzija u byte array
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            //byte[] byteArray = stream.toByteArray();
+            picture = stream.toByteArray();
+            //bitmap.recycle();
+
             if(imageView!=null){
                 imageView.setImageBitmap(bitmap);
                 //Promijeni tekstualne upute ispod slike
@@ -218,6 +227,7 @@ public class UploadPhoto extends AppCompatActivity {
             text.setText(this.getString(R.string.upload_message_face_swap_after));
 
         }
+
     }
 
 }
