@@ -19,10 +19,6 @@ def main(slika):
         loaded_model = tf.keras.models.load_model(dir1)
 
         #2.tryout
-        #dir2 = join(dirname(__file__), "saved_model.pb")
-        #loaded_model = tf.saved_model.load(dir2)
-
-        #3.tryout
         #model = VGG16()
         #print(loaded_model.summary())
 

@@ -25,7 +25,7 @@ def main(slika):
 
 
     detector = dlib.get_frontal_face_detector()
-    shape_predictor = join(dirname(__file__), "shape_predictor_68_face_landmarks.dat")
+    shape_predictor = join(dirname(__file__), "shape_predictor_68_face_landmarks_testniipromijenitiovajnaziv.dat")
     predictor = dlib.shape_predictor(shape_predictor)
     height, width, channels = img2.shape
     img2_new_face = np.zeros((height, width, channels), np.uint8)
