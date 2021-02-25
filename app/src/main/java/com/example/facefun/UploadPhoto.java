@@ -34,12 +34,15 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 public class UploadPhoto extends AppCompatActivity {
 
     public static final int  LOAD_IMAGE_REQUEST = 1;
     private static final int TAKE_PICTURE_REQUEST = 2;
     public  static final int PERMISSION_CODE_REQUEST  = 3 ;
-    public static byte[] picture;
+    public byte[] picture;
+    public byte[] picture2;
+    public int[] pic_arr;
     ImageButton imageButton ;
     ImageView imageView ;
     Intent intent ;
@@ -132,12 +135,21 @@ public class UploadPhoto extends AppCompatActivity {
             //stvaranje python instance
             Python py = Python.getInstance();
             //stvaranje python objekta
-            PyObject pyobj = py.getModule("test"); //davanje imena python skripti
+            //PyObject pyobj = py.getModule("face_swap"); //davanje imena python skripti
+            PyObject pyobj2 = py.getModule("age_and_gender_detection"); //davanje imena python skripti
 
             PyObject upload_image = PyObject.fromJava(picture); // boze koji jesi pomozi
-            PyObject obj = pyobj.callAttr("main", upload_image);
+            //Object obj = pyobj.callAttr("main", upload_image);
+            Object obj2 = pyobj2.callAttr("main", upload_image);
+            //int[] data = pyobj.callAttr("main", upload_image).toJava(int[].class);
 
-            System.out.println(obj);
+            //za kristusa
+            //String str;
+            // str = obj.toString();
+
+            //pic = str(obj);
+
+            System.out.print(obj2);
 
         }
 

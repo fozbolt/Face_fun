@@ -30,6 +30,10 @@ android {
                 install "Pillow"
                 install "opencv-python"
                 install "tensorflow"
+                install "dlib"
+                install "face-cropper"
+                install "keras==2.3.0"
+
             }
         }
 

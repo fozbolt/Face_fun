@@ -8,11 +8,11 @@
     <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredIdentifiers">
         <list>
-          <option value="numpy" />
           <option value="src.main.python.test.print" />
-          <option value="cv2" />
-          <option value="src.main.python.test.os" />
           <option value="src.main.python.test.len" />
+          <option value="src.main.python.age_and_gender_detection.print" />
+          <option value="src.main.python.age_and_gender_detection.len" />
+          <option value="src.main.python.age_and_gender_detection.os" />
         </list>
       </option>
     </inspection_tool>
