@@ -2,6 +2,8 @@ package com.example.facefun;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import java.util.Arrays;
+
 
 import android.Manifest;
 import android.content.Intent;
@@ -22,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.content.Intent;
 import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
@@ -33,6 +36,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 
 public class UploadPhoto extends AppCompatActivity {
@@ -136,28 +140,23 @@ public class UploadPhoto extends AppCompatActivity {
             Python py = Python.getInstance();
             //stvaranje python objekta
             //PyObject pyobj = py.getModule("face_swap"); //davanje imena python skripti
-            PyObject pyobj2 = py.getModule("age_and_gender_detection"); //davanje imena python skripti
 
-            PyObject upload_image = PyObject.fromJava(picture); // boze koji jesi pomozi
-            //Object obj = pyobj.callAttr("main", upload_image);
-            Object obj2 = pyobj2.callAttr("main", upload_image);
-            //int[] data = pyobj.callAttr("main", upload_image).toJava(int[].class);
+            PyObject upload_image = PyObject.fromJava(picture);
 
-            //za kristusa
-            //String str;
-            // str = obj.toString();
+            //age and gender
+            PyObject pyobj_age_and_gender = py.getModule("age_and_gender_detection"); //davanje imena python skripti
+            //int[] data = pyobj_age_and_gender.callAttr("main", upload_image).toJava(int[].class);
+            String rezultat = pyobj_age_and_gender.callAttr("main", upload_image).toString();
 
-            //pic = str(obj);
 
-            System.out.print(obj2);
+            Intent i = new Intent(this, ResultPage.class);
+            i.putExtra("result", rezultat);
+            startActivity(i);
 
         }
+        //processImage();
 
 
-        processImage();
-
-        Intent i = new Intent(this, ResultPage.class);
-        startActivity(i);
     }
 
 

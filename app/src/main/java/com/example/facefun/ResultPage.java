@@ -22,6 +22,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -36,10 +37,18 @@ import java.util.Date;
 public class ResultPage extends AppCompatActivity {
     Button save;
     Bitmap bitmap;
+    String result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_page);
+
+        Intent i = getIntent();
+        result = i.getExtras().getString("result");
+
+        TextView txtView= findViewById(R.id.resultText);
+
+        txtView.setText(result);
 
     }
 

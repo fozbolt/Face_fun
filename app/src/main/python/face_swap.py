@@ -181,4 +181,4 @@ def main(slika):
     #cv2.destroyAllWindows()
 
 
-    return 'jeddvatri'
+    return seamlessclone

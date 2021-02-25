@@ -11,8 +11,8 @@ def main(slika):
     loaded_model=None
     cropped_image=None
 
-    print('tff:', tf.version.VERSION) ##2.1.0
-    print(keras.__version__) ##2.2.3-ff
+    #print('tff:', tf.version.VERSION) ##2.1.0
+    #print(keras.__version__) ##2.2.3-ff
     try:
         #1.tryout
         dir1 = join(dirname(__file__), "age_and_gender_3_after_v2.h5")
@@ -30,8 +30,6 @@ def main(slika):
         print('Error with loading model')
 
 
-    print('tu sam2')
-    print('modell: ', loaded_model)
     img_path = join(dirname(__file__), "marin.jpg")
 
     #paket face-cropper
@@ -58,7 +56,13 @@ def main(slika):
         age=int(np.round(prediction[1][0]))
         gender=int(np.round(prediction[0][0]))
 
-        print("Predicted Age: "+ str(age))
-        print("Predicted Gender: "+ gender_f[gender])
+        predictedAge = "Predicted Age: "+ str(age)
+        predictedGender = "Predicted Gender: "+ gender_f[gender]
 
-    return "testni_return"
+        print(f"{predictedGender}\n {predictedAge}")
+
+        result = [age,gender]
+        result = "Age: " + age + "  Gender: " + gender
+
+
+    return result
