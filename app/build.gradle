@@ -33,7 +33,6 @@ android {
                 install "dlib"
                 install "face-cropper"
                 install "keras==2.3.0"
-
             }
         }
 

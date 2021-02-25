@@ -1,10 +1,6 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
-    <inspection_tool class="ConstantConditions" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="SUGGEST_NULLABLE_ANNOTATIONS" value="false" />
-      <option name="DONT_REPORT_TRUE_ASSERT_STATEMENTS" value="false" />
-    </inspection_tool>
     <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredIdentifiers">
         <list>
@@ -13,6 +9,12 @@
           <option value="src.main.python.age_and_gender_detection.print" />
           <option value="src.main.python.age_and_gender_detection.len" />
           <option value="src.main.python.age_and_gender_detection.os" />
+          <option value="numpy" />
+          <option value="tensorflow" />
+          <option value="cv2" />
+          <option value="src.main.python.Celebrity_FR.os" />
+          <option value="src.main.python.Celebrity_FR.len" />
+          <option value="src.main.python.Celebrity_FR.print" />
         </list>
       </option>
     </inspection_tool>

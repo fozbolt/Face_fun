@@ -144,10 +144,13 @@ public class UploadPhoto extends AppCompatActivity {
             PyObject upload_image = PyObject.fromJava(picture);
 
             //age and gender
-            PyObject pyobj_age_and_gender = py.getModule("age_and_gender_detection"); //davanje imena python skripti
+            //PyObject pyobj_age_and_gender = py.getModule("age_and_gender_detection"); //davanje imena python skripti
             //int[] data = pyobj_age_and_gender.callAttr("main", upload_image).toJava(int[].class);
-            String rezultat = pyobj_age_and_gender.callAttr("main", upload_image).toString();
+            //String rezultat = pyobj_age_and_gender.callAttr("main", upload_image).toString();
 
+            //Celebrity_FR
+            PyObject pyobj_celebFR = py.getModule("Celebrity_FR");
+            String rezultat = pyobj_celebFR.callAttr("main", upload_image).toString();
 
             Intent i = new Intent(this, ResultPage.class);
             i.putExtra("result", rezultat);
