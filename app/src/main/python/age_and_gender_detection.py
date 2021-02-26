@@ -40,7 +40,6 @@ def main(slika):
 
         #PIL format u cv2
         imcv = cv2.cvtColor(np.asarray(cropped_image), cv2.COLOR_RGB2BGR)
-        print(imcv)
 
         #podesavanje u prikladan format za fittanje na model
         img_resized = cv2.resize(imcv,(48,48))
