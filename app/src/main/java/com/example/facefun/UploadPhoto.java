@@ -124,21 +124,21 @@ public class UploadPhoto extends AppCompatActivity {
             }
 
             String rezultat = null;
+            Intent i = new Intent(this, ResultPage.class);
 
 
 
             switch (choice){
                 case "face_swap":{
-                    //face swap
-
-                    //int[][][] rezultat = pyobj_face_swap.callAttr("main", upload_image).toJava(int[][][].class);
+                    int[][][] image_arr = py_obj.callAttr("main", upload_image).toJava(int[][][].class);
+                    i.putExtra("result", image_arr);
                     break;
                 }
                 case "age_and_gender_detection":{
                     System.out.println("Test2");
-                    //PyObject pyobj_age_and_gender = py.getModule(choice); //davanje imena python skripti
                     //int[] data = pyobj_age_and_gender.callAttr("main", upload_image).toJava(int[].class);  --> ako želimo slati array
-                    //String rezultat = pyobj_age_and_gender.callAttr("main", upload_image).toString();
+                    rezultat = py_obj.callAttr("main", upload_image).toString();
+                    i.putExtra("result", rezultat);
                     break;
                 }
                 case "celebrity_face_recognition":{
@@ -146,17 +146,17 @@ public class UploadPhoto extends AppCompatActivity {
 
                     rezultat = py_obj.callAttr("main", upload_image).toString();
                     System.out.print(rezultat);
+                    i.putExtra("result", rezultat);
                     break;
                 }
                 case "celeb_lookalike":{
                     System.out.println("Test 4");
+                    //i.putExtra("result", rezultat);
                     break;
                 }
             }
 
 
-            Intent i = new Intent(this, ResultPage.class);
-            i.putExtra("result", rezultat);
             startActivity(i);
 
         }
