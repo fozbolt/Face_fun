@@ -2,6 +2,9 @@ package com.example.facefun;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 
@@ -130,8 +133,16 @@ public class UploadPhoto extends AppCompatActivity {
 
             switch (choice){
                 case "face_swap":{
+
                     int[][][] image_arr = py_obj.callAttr("main", upload_image).toJava(int[][][].class);
-                    i.putExtra("result", image_arr);
+                    //List<PyObject> obj = py_obj.callAttr("main", upload_image).asList();
+                    //int[] res1 = obj.get(0).toJava(int[].class);
+                    //PyObject object = py_obj.callAttr("main", upload_image).to;
+                    System.out.print("rezz:" + Arrays.deepToString(image_arr[0]));
+
+
+                    String a = "a";
+                    i.putExtra("result", a);
                     break;
                 }
                 case "age_and_gender_detection":{
