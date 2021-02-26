@@ -7,7 +7,7 @@ from keras_vggface.utils import decode_predictions
 
 def main(slika):
     filepathHaars = join(dirname(__file__), "haarcascade_frontalface_default.xml")
-    filepathImage = join(dirname(__file__), "slika.jpg")
+    filepathImage = join(dirname(__file__), "johnny_depp.jpg")
     picture = cv2.imread(filepathImage)
     img = np.asarray(picture, dtype='uint8')
     face_cascade = cv2.CascadeClassifier(filepathHaars)
@@ -17,7 +17,6 @@ def main(slika):
     else:
         for (x, y, w, h) in face:
             slika_resized = cv2.resize(img[y:y+h, x:x+w], (224,224), interpolation= cv2.INTER_AREA)
-            print(slika_resized)
 
     slika_resized = slika_resized.astype('float32')
     slika_resized = np.expand_dims(slika_resized, axis = 0)
@@ -25,5 +24,7 @@ def main(slika):
 
     model = VGGFace(model = 'resnet50')
 
-    print(model,"ovo je model")
-    return "bravosssss"
+    prediction = model.predict(slika_resized)
+    results = decode_predictions(prediction)
+
+    return results

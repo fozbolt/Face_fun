@@ -142,16 +142,14 @@ public class UploadPhoto extends AppCompatActivity {
                     break;
                 }
                 case "celebrity_face_recognition":{
-                    System.out.println("test 3");
-
                     rezultat = py_obj.callAttr("main", upload_image).toString();
-                    System.out.print(rezultat);
                     i.putExtra("result", rezultat);
                     break;
                 }
-                case "celeb_lookalike":{
+                case "celebrity_look_alike":{
                     System.out.println("Test 4");
-                    //i.putExtra("result", rezultat);
+                    rezultat = py_obj.callAttr("main", upload_image).toString();
+                    i.putExtra("result", rezultat);
                     break;
                 }
             }

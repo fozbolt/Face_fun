@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
         String activity = "";
         if (v.getId() == swap.getId())   activity = "face_swap";
         else if (v.getId() == age.getId())   activity= "age_and_gender_detection";
-        else if (v.getId() == celeb.getId())  activity= "celeb_fr";
-        else if (v.getId() == lookalike.getId())  activity= "celeb_lookalike";
+        else if (v.getId() == celeb.getId())  activity= "celebrity_face_recognition";
+        else if (v.getId() == lookalike.getId())  activity= "celebrity_look_alike";
 
 
         Intent i = new Intent(this, UploadPhoto.class);
