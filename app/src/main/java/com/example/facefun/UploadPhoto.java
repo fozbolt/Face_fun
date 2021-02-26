@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
+
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -18,6 +19,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -157,9 +159,13 @@ public class UploadPhoto extends AppCompatActivity {
                     break;
                 }
                 case "celebrity_look_alike":{
-                    System.out.println("Test 4");
-                    rezultat = py_obj.callAttr("main", upload_image).toString();
-                    i.putExtra("result", rezultat);
+                    List<PyObject> celebritys = py_obj.callAttr("main", upload_image).asList(); //java list
+                    String [] celeb_array = new String[5];
+                    for(int x=0; x < celebritys.size(); x++){
+                        String temp = celebritys.get(x).toString();
+                        celeb_array[x] = temp;
+                    }
+                    i.putExtra("result", celeb_array);
                     break;
                 }
             }

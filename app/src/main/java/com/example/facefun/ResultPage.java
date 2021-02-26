@@ -31,25 +31,31 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 
 public class ResultPage extends AppCompatActivity {
     Button save;
     Bitmap bitmap;
-    String result;
+    String choice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_page);
 
         Intent i = getIntent();
-        result = i.getExtras().getString("result");
 
-        TextView txtView= findViewById(R.id.resultText);
+        choice = i.getExtras().getString("choice");
 
-        txtView.setText(result);
+        if(choice.equals("celebrity_look_alike")){
+            String [] result;
+            result = i.getExtras().getStringArray("result");
 
+            TextView txtView= findViewById(R.id.resultText);
+            System.out.println(Arrays.toString(result));
+            //txtView.setText(); // te nevin kaj zdej
+        }
     }
 
     public void goBack(View v){

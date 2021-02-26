@@ -27,4 +27,8 @@ def main(slika):
     prediction = model.predict(slika_resized)
     results = decode_predictions(prediction)
 
-    return results
+    final_result = []
+    for result in results[0]:
+        final_result.append('%s: %.3f%%' % (result[0], result[1]*100))
+
+    return final_result
