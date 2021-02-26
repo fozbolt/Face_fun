@@ -135,7 +135,6 @@ public class UploadPhoto extends AppCompatActivity {
                     break;
                 }
                 case "age_and_gender_detection":{
-                    System.out.println("Test2");
                     //int[] data = pyobj_age_and_gender.callAttr("main", upload_image).toJava(int[].class);  --> ako želimo slati array
                     rezultat = py_obj.callAttr("main", upload_image).toString();
                     i.putExtra("result", rezultat);
@@ -156,11 +155,10 @@ public class UploadPhoto extends AppCompatActivity {
                 }
             }
 
-
+            //uz rezultat na sljedeći activity šaljemo i choice da bi znali kako prikazati rezultat
+            i.putExtra("choice", choice);
             startActivity(i);
-
         }
-        //processImage();
 
 
     }
