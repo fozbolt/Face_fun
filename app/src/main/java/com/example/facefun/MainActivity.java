@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         String activity = "";
         if (v.getId() == swap.getId())   activity = "face_swap";
-        else if (v.getId() == age.getId())   activity= "age_detection";
+        else if (v.getId() == age.getId())   activity= "age_and_gender_detection";
         else if (v.getId() == celeb.getId())  activity= "celeb_fr";
         else if (v.getId() == lookalike.getId())  activity= "celeb_lookalike";
 

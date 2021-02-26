@@ -174,7 +174,6 @@ def main(slika):
     seamlessclone = cv2.seamlessClone(result, img2, img2_head_mask, center_face2, cv2.NORMAL_CLONE)
 
     #cv2.imwrite("abcdkristiajnc.jpg",seamlessclone)
-    #(seamlessclone)
     print('success')
     #cv2.waitKey(0)
 

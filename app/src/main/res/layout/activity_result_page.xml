@@ -78,9 +78,10 @@
                 android:contentDescription="@string/upload_icon_description"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.927"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.91"
+                app:layout_constraintVertical_bias="0.915"
                 tools:srcCompat="@drawable/upload_image_icon" />
 
             <pl.droidsonroids.gif.GifImageView
@@ -114,10 +115,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="86dp"
                 android:text="TextView"
+                android:textColor="#090909"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/test"
+                app:layout_constraintHorizontal_bias="0.374"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/WarningMessage" />
+                app:layout_constraintTop_toBottomOf="@+id/WarningMessage"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

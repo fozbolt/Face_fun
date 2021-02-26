@@ -102,55 +102,58 @@ public class UploadPhoto extends AppCompatActivity {
         });
     }
 
-    //tu ide python API logika
-    public void processImage(){
-        System.out.println("Privremeni test");
-        switch (choice){
-            case "face_swap":{
-                System.out.println("Test 1");
-                break;
-            }
-            case "age_detection":{
-                System.out.println("Test 2");
-                break;
-            }
-            case "celeb_fr":{
-                System.out.println("Test 3");
-                break;
-            }
-            case "celeb_lookalike":{
-                System.out.println("Test 4");
-                break;
-            }
-        }
 
-    };
 
-    //intent koji se triggera klikom na "next" button
     public void LaunchResultPage(View v){
 
-        //nekako jos staviti da tu returna rezultat i salje ga u sljedeci intent
-
-        // "context" must be an Activity, Service or Application object from your app.
-        //startanje pythona
         if (!Python.isStarted()) {
             Python.start(new AndroidPlatform(this));
 
             //stvaranje python instance
             Python py = Python.getInstance();
             //stvaranje python objekta
-            //PyObject pyobj = py.getModule("face_swap"); //davanje imena python skripti
+            PyObject upload_image = null;
+            PyObject py_obj = null;
 
-            PyObject upload_image = PyObject.fromJava(picture);
+            try {
+                upload_image = PyObject.fromJava(picture);
+                py_obj = py.getModule(choice);
+            }
+            catch (Error e){
+                System.out.print("Unable to load python module");
+            }
 
-            //age and gender
-            //PyObject pyobj_age_and_gender = py.getModule("age_and_gender_detection"); //davanje imena python skripti
-            //int[] data = pyobj_age_and_gender.callAttr("main", upload_image).toJava(int[].class);
-            //String rezultat = pyobj_age_and_gender.callAttr("main", upload_image).toString();
+            String rezultat = null;
 
-            //Celebrity_FR
-            PyObject pyobj_celebFR = py.getModule("Celebrity_FR");
-            String rezultat = pyobj_celebFR.callAttr("main", upload_image).toString();
+
+
+            switch (choice){
+                case "face_swap":{
+                    //face swap
+
+                    //int[][][] rezultat = pyobj_face_swap.callAttr("main", upload_image).toJava(int[][][].class);
+                    break;
+                }
+                case "age_and_gender_detection":{
+                    System.out.println("Test2");
+                    //PyObject pyobj_age_and_gender = py.getModule(choice); //davanje imena python skripti
+                    //int[] data = pyobj_age_and_gender.callAttr("main", upload_image).toJava(int[].class);  --> ako želimo slati array
+                    //String rezultat = pyobj_age_and_gender.callAttr("main", upload_image).toString();
+                    break;
+                }
+                case "celebrity_face_recognition":{
+                    System.out.println("test 3");
+
+                    rezultat = py_obj.callAttr("main", upload_image).toString();
+                    System.out.print(rezultat);
+                    break;
+                }
+                case "celeb_lookalike":{
+                    System.out.println("Test 4");
+                    break;
+                }
+            }
+
 
             Intent i = new Intent(this, ResultPage.class);
             i.putExtra("result", rezultat);

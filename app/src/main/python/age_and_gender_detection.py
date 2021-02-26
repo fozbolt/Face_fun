@@ -1,30 +1,25 @@
 import numpy as np
 import tensorflow as tf
-from tensorflow import keras
 import cv2
 from face_cropper import crop
 from os.path import dirname, join
-from keras.applications.vgg16 import VGG16
 
 def main(slika):
+
+    #print('tff:', tf.version.VERSION) ##2.1.0
+    #print(keras.__version__) ##2.2.3-ff
 
     loaded_model=None
     cropped_image=None
 
-    #print('tff:', tf.version.VERSION) ##2.1.0
-    #print(keras.__version__) ##2.2.3-ff
     try:
-        #1.tryout
-        dir1 = join(dirname(__file__), "age_and_gender_3_after_v2.h5")
-        loaded_model = tf.keras.models.load_model(dir1)
 
-        #2.tryout
-        #model = VGG16()
+        dir = join(dirname(__file__), "age_and_gender_3_after_v2.h5")
+        loaded_model = tf.keras.models.load_model(dir)
+
         #print(loaded_model.summary())
 
-        #print(list(loaded.signatures.keys()))  # ["serving_default"]
-        #loaded_model.summary()
-        print('Model loaded successfully: ', loaded_model)
+        print('Model loaded successfully')
 
     except:
         print('Error with loading model')
@@ -42,8 +37,10 @@ def main(slika):
         raise Exception('Image format unknown')
 
     else:
+
         #PIL format u cv2
         imcv = cv2.cvtColor(np.asarray(cropped_image), cv2.COLOR_RGB2BGR)
+        print(imcv)
 
         #podesavanje u prikladan format za fittanje na model
         img_resized = cv2.resize(imcv,(48,48))
@@ -56,13 +53,11 @@ def main(slika):
         age=int(np.round(prediction[1][0]))
         gender=int(np.round(prediction[0][0]))
 
-        predictedAge = "Predicted Age: "+ str(age)
-        predictedGender = "Predicted Gender: "+ gender_f[gender]
+        print("Predicted Age: "+ str(age))
+        print("Predicted Gender: "+ gender_f[gender])
 
-        print(f"{predictedGender}\n {predictedAge}")
 
-        result = [age,gender]
-        result = "Age: " + age + "  Gender: " + gender
-
+        #result = [age,gender]
+        result = "Age: " + str(age) + "  Gender: " + str(gender_f[gender])
 
     return result
