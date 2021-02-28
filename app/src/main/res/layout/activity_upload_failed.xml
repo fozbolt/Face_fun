@@ -2,15 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/download_button"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/take_picture_icon"
-    tools:context=".UploadPhoto">
+    tools:context=".UploadFailed">
 
     <LinearLayout
         android:id="@+id/LinearLayout_Header"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="71dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +56,7 @@
     <LinearLayout
         android:id="@+id/LinearLayout_Body"
         android:layout_width="match_parent"
-        android:layout_height="580dp"
+        android:layout_height="587dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,32 +68,32 @@
             android:layout_height="match_parent"
             android:background="#FFFFFF">
 
-            <ImageView
-                android:id="@+id/imageView_upload_icon"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                android:contentDescription="@string/upload_icon_description"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.496"
+            <!-- https://www.taimoorsikander.com/how-to-add-a-gif-image-in-android-studio-example/ -->
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/gifImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:src="@drawable/not_found"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.237"
-                app:srcCompat="@drawable/upload_image_icon" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/resultText"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:fadeScrollbars="false"
                 android:fontFamily="@font/chewy_regular"
-                android:text="@string/upload_message"
+                android:gravity="center"
+                android:maxLines="2"
+                android:text="@string/upload_warning_message"
                 android:textColor="#47525E"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_upload_icon" />
-
+                app:layout_constraintTop_toBottomOf="@+id/gifImageView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
@@ -116,25 +116,26 @@
             android:background="#B1AEAC">
 
             <ImageButton
-                android:id="@+id/button_gallery"
+                android:id="@+id/return_button"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="10dp"
-                android:background="@drawable/gallery_icon"
+                android:background="@drawable/return_button_icon"
                 android:contentDescription="@string/button_gallery"
+                android:onClick="goBack"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/take_picture_button"
                 app:layout_constraintHorizontal_bias="0.209"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
             <ImageButton
                 android:id="@+id/take_picture_button"
-                android:layout_width="100dp"
-                android:layout_height="90dp"
-                android:background="@drawable/take_picture_icon"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:background="@drawable/download_icon"
                 android:contentDescription="@string/button_take_photo"
+                android:onClick="saveImage"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
@@ -146,9 +147,9 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="10dp"
-                android:background="@drawable/asda_6537366261580817585_128"
+                android:background="@drawable/home_icon"
                 android:contentDescription="@string/button_next"
-                android:onClick="LaunchResultPage"
+                android:onClick="launchMainActivity"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.751"

@@ -33,12 +33,14 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 
 public class ResultPage extends AppCompatActivity {
     Button save;
     Bitmap bitmap;
     String choice;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,13 +50,29 @@ public class ResultPage extends AppCompatActivity {
 
         choice = i.getExtras().getString("choice");
 
+        byte[] byteArray = getIntent().getByteArrayExtra("image");
+        bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        ImageView im = findViewById(R.id.resultPic);
+        im.setImageBitmap(bitmap);
+
         if(choice.equals("celebrity_look_alike")){
             String [] result;
             result = i.getExtras().getStringArray("result");
 
+
             TextView txtView= findViewById(R.id.resultText);
-            System.out.println(Arrays.toString(result));
-            //txtView.setText(); // te nevin kaj zdej
+            //ne funkcionira s replaceAll zbog "["
+            String res = Arrays.toString(result);
+            String strNew = res.replace("b'", "");
+            strNew = strNew.replace("[", "");
+            strNew = strNew.replace("]", "");
+            strNew = strNew.replace("'", "");
+            String[] parts = strNew.split(",");
+
+
+            System.out.print("rezz:" + parts[0]);
+            String rez = "1. " + parts[0] + "\n" + "2. " + parts[1] + "\n" + "3. " + parts[2] + "\n" + "4. " + parts[3] + "\n" + "5. " + parts[4];
+            txtView.setText(rez); // te nevin kaj zdej
         }
     }
 
@@ -66,7 +84,8 @@ public class ResultPage extends AppCompatActivity {
     //spremanje obrađene slike na mobitel
     public void saveImage(View v){
         //ovo promijeniti u obradenu sliku kada spojimo
-        ImageView iv = (ImageView)findViewById(R.id.test);
+        ImageView iv = (ImageView)findViewById(R.id.resultPic);
+
 
         iv.buildDrawingCache();
         Bitmap bmp = iv.getDrawingCache();

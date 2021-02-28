@@ -8,6 +8,7 @@
     <string name="upload_message_face_swap_after"> Image uploaded. Click \"next\"  button to proceed.</string>
     <string name="upload_message_face_swap2">Click to upload second picture</string>
     <string name="upload_message_universal">Click to upload picture</string>
+    <string name="result_message">Results:</string>
     <string name="button_gallery">Click to open gallery</string>
     <string name="button_take_photo">Click to take new photo</string>
     <string name="button_next">Click to proceed</string>

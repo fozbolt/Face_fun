@@ -3,6 +3,7 @@ import tensorflow as tf
 import cv2
 from face_cropper import crop
 from os.path import dirname, join
+from PIL import Image
 
 def main(slika):
 
@@ -26,8 +27,11 @@ def main(slika):
 
 
     img_path = join(dirname(__file__), "marin.jpg")
+    #print(slika)
+    #img = cv2.imread(slika)
 
     #paket face-cropper
+
     cropped_image = crop(
         image_path = img_path,
     )

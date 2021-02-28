@@ -70,58 +70,31 @@
 
             <!-- https://www.taimoorsikander.com/how-to-add-a-gif-image-in-android-studio-example/ -->
 
-            <ImageView
-                android:id="@+id/test"
-                android:layout_width="191dp"
-                android:layout_height="161dp"
-                android:background="@drawable/upload_image_icon"
-                android:contentDescription="@string/upload_icon_description"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.927"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.915"
-                tools:srcCompat="@drawable/upload_image_icon" />
-
-            <pl.droidsonroids.gif.GifImageView
-                android:id="@+id/gifImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="56dp"
-                android:src="@drawable/not_found"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <TextView
-                android:id="@+id/WarningMessage"
+                android:id="@+id/resultText"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="42dp"
                 android:fadeScrollbars="false"
                 android:fontFamily="@font/chewy_regular"
                 android:gravity="center"
-                android:maxLines="2"
-                android:text="@string/upload_warning_message"
+                android:text="@string/result_message"
                 android:textColor="#47525E"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/gifImageView" />
+                app:layout_constraintTop_toBottomOf="@+id/resultPic" />
 
-            <TextView
-                android:id="@+id/resultText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="86dp"
-                android:text="TextView"
-                android:textColor="#090909"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/test"
-                app:layout_constraintHorizontal_bias="0.374"
+            <ImageView
+                android:id="@+id/resultPic"
+                android:layout_width="291dp"
+                android:layout_height="260dp"
+                android:layout_marginTop="44dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/WarningMessage"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_launcher_background" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

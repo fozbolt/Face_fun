@@ -178,6 +178,7 @@ def main(slika):
     #cv2.waitKey(0)
 
     #cv2.destroyAllWindows()
-
-
-    return seamlessclone
+    #a.tolist()
+    arr = np.array([1, 2, 3, 4, 5])
+    arr = arr.astype(np.int64)
+    return arr
