@@ -6,6 +6,8 @@ import androidx.core.content.ContextCompat;
 
 
 import android.Manifest;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -25,6 +27,9 @@ import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.List;
 
 
@@ -150,7 +155,6 @@ public class UploadPhoto extends AppCompatActivity {
                     for(int x=0; x < celebritys.size(); x++){
                         String temp = celebritys.get(x).toString();
                         celeb_array[x] = temp;
-
                     }
 
                     i.putExtra("result", celeb_array);
@@ -221,12 +225,31 @@ public class UploadPhoto extends AppCompatActivity {
         if (requestCode == TAKE_PICTURE_REQUEST && resultCode == RESULT_OK){
             bitmap = (Bitmap) data.getExtras().get("data");
 
-            //konverzija u byte array
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            //byte[] byteArray = stream.toByteArray();
-            picture = stream.toByteArray();
-            //bitmap.recycle();
+            //spremanje u folder
+            ContextWrapper cw = new ContextWrapper(getApplicationContext());
+            File directory = cw.getDir("python", Context.MODE_PRIVATE);
+            System.out.println(directory);
+            File mypath = new File(directory, "testslika.png");
+            System.out.println(mypath);
+            System.out.println("okej");
+            if (mypath.exists()) {
+                mypath.delete();
+                System.out.println("izbrisano");
+            }
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(mypath);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+                fos.flush();
+                fos.close();
+            } catch (Exception e) {
+                Log.e("SAVE_IMAGE", e.getMessage(), e);
+            }
+
+            //ByteArrayOutputStream stream = null;
+            //stream = new ByteArrayOutputStream();
+            //bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            //picture = stream.toByteArray();
 
             //cudan uvjet? kako ako nije null, ?
             if(imageView!=null){

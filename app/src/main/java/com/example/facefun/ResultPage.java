@@ -72,7 +72,7 @@ public class ResultPage extends AppCompatActivity {
 
             System.out.print("rezz:" + parts[0]);
             String rez = "1. " + parts[0] + "\n" + "2. " + parts[1] + "\n" + "3. " + parts[2] + "\n" + "4. " + parts[3] + "\n" + "5. " + parts[4];
-            txtView.setText(rez); // te nevin kaj zdej
+            txtView.setText(rez);
         }
     }
 
