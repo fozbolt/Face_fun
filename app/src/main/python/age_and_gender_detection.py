@@ -29,6 +29,8 @@ def main(slika):
     img_path = join(dirname(__file__), "marin.jpg")
     #print(slika)
     #img = cv2.imread(slika)
+    img = np.array(slika, dtype='uint8')
+    print("dobro",img)
 
     #paket face-cropper
 
@@ -43,7 +45,7 @@ def main(slika):
     else:
 
         #PIL format u cv2
-        imcv = cv2.cvtColor(np.asarray(cropped_image), cv2.COLOR_RGB2BGR)
+        imcv = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
 
         #podesavanje u prikladan format za fittanje na model
         img_resized = cv2.resize(imcv,(48,48))
