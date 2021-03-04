@@ -14,7 +14,9 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -39,6 +41,7 @@ public class UploadPhoto extends AppCompatActivity {
     public static final int  LOAD_IMAGE_REQUEST = 1;
     private static final int TAKE_PICTURE_REQUEST = 2;
     public  static final int PERMISSION_CODE_REQUEST  = 3 ;
+    String ImageFilePath;
     public byte[] picture;
     int proba = 0;
     public byte[] picture2;
@@ -142,17 +145,17 @@ public class UploadPhoto extends AppCompatActivity {
                 }
                 case "age_and_gender_detection":{
                     //int[] data = pyobj_age_and_gender.callAttr("main", upload_image).toJava(int[].class);  --> ako želimo slati array
-                    String rezultat = py_obj.callAttr("main", upload_image).toString();
+                    String rezultat = py_obj.callAttr("main",ImageFilePath).toString();
                     i.putExtra("result", rezultat);
                     break;
                 }
                 case "celebrity_face_recognition":{
-                    String result = py_obj.callAttr("main", upload_image).toString();
+                    String result = py_obj.callAttr("main", ImageFilePath).toString();
                     i.putExtra("result", result);
                     break;
                 }
                 case "celebrity_look_alike":{
-                    List<PyObject> celebritys = py_obj.callAttr("main", upload_image).asList(); //java list
+                    List<PyObject> celebritys = py_obj.callAttr("main", ImageFilePath).asList(); //java list
                     String [] celeb_array = new String[5];
                     for(int x=0; x < celebritys.size(); x++){
                         String temp = celebritys.get(x).toString();
@@ -217,7 +220,23 @@ public class UploadPhoto extends AppCompatActivity {
         }
     }
 
+    private String createDirectoryAndSaveFile(Bitmap imageToSave) {
 
+        File directory = new File(Environment.getExternalStorageDirectory() + "/Image_Storage");
+        if (!directory.exists()) { directory.mkdir(); }
+        File imagefile = new File(directory,"Upload_image");
+        if (imagefile.exists()) { imagefile.delete(); }
+        String ImageFilePath = imagefile.toString();
+
+        try {
+            FileOutputStream out = new FileOutputStream(imagefile);
+            imageToSave.compress(Bitmap.CompressFormat.PNG, 100, out);
+            out.flush();
+            out.close();
+        } catch (Exception e) { e.printStackTrace(); }
+
+        return ImageFilePath;
+    }
 
     @Override
     // handleri nakon fotografiranja ili odabira fotografije
@@ -226,11 +245,13 @@ public class UploadPhoto extends AppCompatActivity {
 
         if (requestCode == TAKE_PICTURE_REQUEST && resultCode == RESULT_OK){
             bitmap = (Bitmap) data.getExtras().get("data");
+            ImageFilePath = createDirectoryAndSaveFile(bitmap);
 
-            ByteArrayOutputStream stream = null;
-            stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            picture = stream.toByteArray();
+            //Konvertiranje u byte array
+            //ByteArrayOutputStream stream = null;
+            //stream = new ByteArrayOutputStream();
+            //bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            //picture = stream.toByteArray();
 
             //cudan uvjet? kako ako nije null, ?
             if(imageView!=null){

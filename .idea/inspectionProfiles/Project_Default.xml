@@ -1,10 +1,6 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
-    <inspection_tool class="ConstantConditions" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="SUGGEST_NULLABLE_ANNOTATIONS" value="false" />
-      <option name="DONT_REPORT_TRUE_ASSERT_STATEMENTS" value="false" />
-    </inspection_tool>
     <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredIdentifiers">
         <list>
@@ -29,6 +25,8 @@
           <option value="src.main.python.celebrity_look_alike.print" />
           <option value="src.main.python.celebrity_look_alike.os" />
           <option value="src.main.python.celebrity_look_alike.keras_vggface" />
+          <option value="src.main.python.celebrity_look_alike.face_cropper" />
+          <option value="src.main.python.celebrity_face_recognition.face_cropper" />
         </list>
       </option>
     </inspection_tool>

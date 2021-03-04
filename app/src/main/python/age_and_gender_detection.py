@@ -5,7 +5,7 @@ from face_cropper import crop
 from os.path import dirname, join
 from PIL import Image
 
-def main(slika):
+def main(ImageFilePath):
 
     #print('tff:', tf.version.VERSION) ##2.1.0
     #print(keras.__version__) ##2.2.3-ff
@@ -26,16 +26,16 @@ def main(slika):
         print('Error with loading model')
 
 
-    img_path = join(dirname(__file__), "marin.jpg")
+    #img_path = join(dirname(__file__), "marin.jpg")
     #print(slika)
     #img = cv2.imread(slika)
-    img = np.array(slika, dtype='uint8')
-    print("dobro",img)
+    #img = np.array(slika, dtype='uint8')
+    #print("dobro",img)
 
     #paket face-cropper
 
     cropped_image = crop(
-        image_path = img_path,
+        image_path = ImageFilePath,
     )
 
 
@@ -45,7 +45,7 @@ def main(slika):
     else:
 
         #PIL format u cv2
-        imcv = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+        imcv = cv2.cvtColor(np.array(cropped_image, dtype='uint8'), cv2.COLOR_RGB2BGR)
 
         #podesavanje u prikladan format za fittanje na model
         img_resized = cv2.resize(imcv,(48,48))
