@@ -31,13 +31,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     public void launchGallery(View v){
         Intent i = new Intent(this,GalleryPage.class);
         startActivity(i);
     }
-
-
 
     public void launchPhotoUpload(View v){
         View swap = findViewById(R.id.LinearLayout_face_swap);

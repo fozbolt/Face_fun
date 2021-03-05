@@ -117,11 +117,11 @@ public class ResultPage extends AppCompatActivity {
 
         @SuppressLint("SimpleDateFormat") String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
 
-        File file = new File(storageLoc, timeStamp + ".jpg");
+        File file = new File(storageLoc, timeStamp + ".png");
 
         try{
             FileOutputStream fos = new FileOutputStream(file);
-            bmp.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, fos);
             fos.close();
 
             Toast.makeText(getApplicationContext(),"Image saved succesfully",Toast.LENGTH_SHORT).show();
