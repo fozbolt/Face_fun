@@ -12,6 +12,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -204,9 +206,6 @@ public class UploadPhoto extends AppCompatActivity {
     }
 */
 
-
-
-
     //za novije verzije kao što su API 23 +, ANDROID 6.0 +
     public void EnableRuntimePermission(){
 
@@ -247,13 +246,13 @@ public class UploadPhoto extends AppCompatActivity {
 
         File directory = new File(Environment.getExternalStorageDirectory() + "/Image_Storage");
         if (!directory.exists()) { directory.mkdir(); }
-        File imagefile = new File(directory,"Upload_image.jpg");
+        File imagefile = new File(directory,"Upload_image.png");
         if (imagefile.exists()) { imagefile.delete(); }
         String ImageFilePath = imagefile.toString();
 
         try {
             FileOutputStream out = new FileOutputStream(imagefile);
-            imageToSave.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            imageToSave.compress(Bitmap.CompressFormat.PNG, 100, out);
             out.flush();
             out.close();
         } catch (Exception e) { e.printStackTrace(); }
@@ -303,7 +302,9 @@ public class UploadPhoto extends AppCompatActivity {
             TextView text = (TextView) findViewById(R.id.resultText);
             text.setText(this.getString(R.string.upload_message_face_swap_after));
 
-
+            imageView.setDrawingCacheEnabled(true);
+            bitmap = imageView.getDrawingCache();
+            ImageFilePath = createDirectoryAndSaveFile(bitmap);
         }
 
     }
