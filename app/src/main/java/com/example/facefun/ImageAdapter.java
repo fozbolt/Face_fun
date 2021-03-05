@@ -3,12 +3,14 @@ package com.example.facefun;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -18,7 +20,9 @@ public class ImageAdapter extends BaseAdapter {
 
     public ImageAdapter(Context c){
         context = c;
-        try { list = context.getAssets().list("Gallery_images"); }
+        File directory = new File(Environment.getExternalStorageDirectory() + "/gallery_images");
+        String directory_path = directory.toString();
+        try { list = context.getAssets().list(directory_path); }
         catch (IOException e) { e.printStackTrace(); }
     }
 
@@ -46,7 +50,7 @@ public class ImageAdapter extends BaseAdapter {
         img.setLayoutParams(new GridView.LayoutParams(240,240));
 
         try{
-            InputStream ims = context.getAssets().open("Gallery_images/" + list[position]);
+            InputStream ims = context.getAssets().open("gallery_images/" + list[position]);
             Bitmap bitmap = BitmapFactory.decodeStream(ims);
             img.setImageBitmap(bitmap);
         } catch (IOException e){ e.printStackTrace(); }

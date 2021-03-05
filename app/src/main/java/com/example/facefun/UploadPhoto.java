@@ -224,13 +224,13 @@ public class UploadPhoto extends AppCompatActivity {
 
         File directory = new File(Environment.getExternalStorageDirectory() + "/Image_Storage");
         if (!directory.exists()) { directory.mkdir(); }
-        File imagefile = new File(directory,"Upload_image");
+        File imagefile = new File(directory,"Upload_image.jpg");
         if (imagefile.exists()) { imagefile.delete(); }
         String ImageFilePath = imagefile.toString();
 
         try {
             FileOutputStream out = new FileOutputStream(imagefile);
-            imageToSave.compress(Bitmap.CompressFormat.PNG, 100, out);
+            imageToSave.compress(Bitmap.CompressFormat.JPEG, 100, out);
             out.flush();
             out.close();
         } catch (Exception e) { e.printStackTrace(); }

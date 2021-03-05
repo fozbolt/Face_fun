@@ -104,7 +104,8 @@ public class ResultPage extends AppCompatActivity {
         iv.buildDrawingCache();
         Bitmap bmp = iv.getDrawingCache();
 
-        File storageLoc = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES); //context.getExternalFilesDir(null);
+        File storageLoc = new File(Environment.getExternalStorageDirectory() + "/gallery_images"); //context.getExternalFilesDir(null);
+        if (!storageLoc.exists()) { storageLoc.mkdir(); }
 
         @SuppressLint("SimpleDateFormat") String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
 
@@ -115,9 +116,7 @@ public class ResultPage extends AppCompatActivity {
             bmp.compress(Bitmap.CompressFormat.JPEG, 100, fos);
             fos.close();
 
-            //toast ne radi
             Toast.makeText(getApplicationContext(),"Image saved succesfully",Toast.LENGTH_SHORT).show();
-
             Toast toast = Toast.makeText(ResultPage.this, "Task Saved", Toast.LENGTH_SHORT);
             toast.show();
 
