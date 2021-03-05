@@ -22,7 +22,8 @@ public class ImageAdapter extends BaseAdapter {
         context = c;
         File directory = new File(Environment.getExternalStorageDirectory() + "/gallery_images");
         String directory_path = directory.toString();
-        try { list = context.getAssets().list(directory_path); }
+        File f = new File(directory_path);
+        try { list = context.getAssets().list("Gallery_images"); }
         catch (IOException e) { e.printStackTrace(); }
     }
 
@@ -50,7 +51,7 @@ public class ImageAdapter extends BaseAdapter {
         img.setLayoutParams(new GridView.LayoutParams(240,240));
 
         try{
-            InputStream ims = context.getAssets().open("gallery_images/" + list[position]);
+            InputStream ims = context.getAssets().open("Gallery_images/" + list[position]);
             Bitmap bitmap = BitmapFactory.decodeStream(ims);
             img.setImageBitmap(bitmap);
         } catch (IOException e){ e.printStackTrace(); }

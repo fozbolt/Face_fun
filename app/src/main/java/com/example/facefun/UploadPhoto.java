@@ -12,6 +12,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -178,8 +180,6 @@ public class UploadPhoto extends AppCompatActivity {
 
             startActivity(i);
         }
-
-
     }
 
 
@@ -224,13 +224,13 @@ public class UploadPhoto extends AppCompatActivity {
 
         File directory = new File(Environment.getExternalStorageDirectory() + "/Image_Storage");
         if (!directory.exists()) { directory.mkdir(); }
-        File imagefile = new File(directory,"Upload_image.jpg");
+        File imagefile = new File(directory,"Upload_image.png");
         if (imagefile.exists()) { imagefile.delete(); }
         String ImageFilePath = imagefile.toString();
 
         try {
             FileOutputStream out = new FileOutputStream(imagefile);
-            imageToSave.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            imageToSave.compress(Bitmap.CompressFormat.PNG, 100, out);
             out.flush();
             out.close();
         } catch (Exception e) { e.printStackTrace(); }
@@ -271,6 +271,17 @@ public class UploadPhoto extends AppCompatActivity {
 
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             String picturePath = cursor.getString(columnIndex);
+            BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+            bitmap = BitmapFactory.decodeFile(picturePath,bmOptions);
+            Matrix matrix = new Matrix();
+
+            matrix.postRotate(90);
+
+            Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth(), bitmap.getHeight(), true);
+
+            Bitmap rotatedBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
+            ImageFilePath = createDirectoryAndSaveFile(bitmap);
+            System.out.println(ImageFilePath);
             cursor.close();
 
             //imageView = findViewById(R.id.imageView_upload_icon);
