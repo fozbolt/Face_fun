@@ -88,6 +88,14 @@ public class ResultPage extends AppCompatActivity {
             String rez = "1. " + parts[0] + "\n" + "2. " + parts[1] + "\n" + "3. " + parts[2] + "\n" + "4. " + parts[3] + "\n" + "5. " + parts[4];
             txtView.setText(rez);
         }
+        if(choice.equals("age_and_gender_detection")){
+            String result;
+            result = i.getExtras().getString("result");
+
+            TextView txtView= findViewById(R.id.resultText);
+
+            txtView.setText(result);
+        }
     }
 
     public void goBack(View v){

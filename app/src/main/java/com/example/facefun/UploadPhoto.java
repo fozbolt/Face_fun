@@ -12,8 +12,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -110,77 +108,102 @@ public class UploadPhoto extends AppCompatActivity {
 
     public void LaunchResultPage(View v){
 
-        if (!Python.isStarted()) {
-            Python.start(new AndroidPlatform(this));
+        if (!Python.isStarted()) { Python.start(new AndroidPlatform(this)); }
+        //stvaranje python instance
+        Python py = Python.getInstance();
+        //stvaranje python objekta
+        PyObject upload_image = null;
+        PyObject py_obj = null;
 
-            //stvaranje python instance
-            Python py = Python.getInstance();
-            //stvaranje python objekta
-            PyObject upload_image = null;
-            PyObject py_obj = null;
+        try {
+            upload_image = PyObject.fromJava(picture);
+            py_obj = py.getModule(choice);
+        }
+        catch (Error e){
+            System.out.print("Unable to load python module");
+        }
 
-            try {
-                upload_image = PyObject.fromJava(picture);
-                py_obj = py.getModule(choice);
-            }
-            catch (Error e){
-                System.out.print("Unable to load python module");
-            }
-
-            Intent i = new Intent(this, ResultPage.class);
+        Intent i = new Intent(this, ResultPage.class);
 
 
-            switch (choice){
-                case "face_swap":{
+        switch (choice){
+            case "face_swap":{
+                //int[][][] image_arr = py_obj.callAttr("main", upload_image).toJava(int[][][].class);
+                List<PyObject> obj = py_obj.callAttr("main", upload_image).asList();
+                int res1 = obj.get(0).toJava(int.class);
+                //PyObject object = py_obj.callAttr("main", upload_image).to;
+                //System.out.print("rezz:" + Arrays.deepToString(image_arr[0]));
 
-                    //int[][][] image_arr = py_obj.callAttr("main", upload_image).toJava(int[][][].class);
-                    List<PyObject> obj = py_obj.callAttr("main", upload_image).asList();
-                    int res1 = obj.get(0).toJava(int.class);
-                    //PyObject object = py_obj.callAttr("main", upload_image).to;
-                    //System.out.print("rezz:" + Arrays.deepToString(image_arr[0]));
-
-                    //int[] image_arr = py_obj.callAttr("main", upload_image).toJava(int[].class);
-                    System.out.print(res1);
-                    String a = "a";
-                    i.putExtra("rezultat", a);
-                    break;
-                }
-                case "age_and_gender_detection":{
-                    //int[] data = pyobj_age_and_gender.callAttr("main", upload_image).toJava(int[].class);  --> ako želimo slati array
-                    String rezultat = py_obj.callAttr("main",ImageFilePath).toString();
-                    i.putExtra("result", rezultat);
-                    break;
-                }
-                case "celebrity_face_recognition":{
-                    String result = py_obj.callAttr("main", ImageFilePath).toString();
-                    i.putExtra("result", result);
-                    break;
-                }
-                case "celebrity_look_alike":{
-                    List<PyObject> celebritys = py_obj.callAttr("main", ImageFilePath).asList(); //java list
-                    String [] celeb_array = new String[5];
-                    for(int x=0; x < celebritys.size(); x++){
-                        String temp = celebritys.get(x).toString();
-                        celeb_array[x] = temp;
-                    }
-
-                    i.putExtra("result", celeb_array);
-                    break;
-                }
+                //int[] image_arr = py_obj.callAttr("main", upload_image).toJava(int[].class);
+                System.out.print(res1);
+                String a = "a";
+                i.putExtra("rezultat", a);
+                break;
             }
 
-            //uz rezultat na sljedeći activity šaljemo i choice da bi znali kako prikazati rezultat
-            i.putExtra("choice", choice);
+            case "age_and_gender_detection":{
+                //int[] data = pyobj_age_and_gender.callAttr("main", upload_image).toJava(int[].class);  --> ako želimo slati array
+                String rezultat = py_obj.callAttr("main",ImageFilePath).toString();
+                i.putExtra("result", rezultat);
+                break;
+            }
 
-            //Convert to byte array -> slanje slike
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            byte[] byteArray = stream.toByteArray();
-            i.putExtra("image",byteArray);
+            case "celebrity_face_recognition":{
+                String result = py_obj.callAttr("main", ImageFilePath).toString();
+                i.putExtra("result", result);
+                break;
+            }
 
-            startActivity(i);
+            case "celebrity_look_alike":{
+                List<PyObject> celebritys = py_obj.callAttr("main", ImageFilePath).asList(); //java list
+                String [] celeb_array = new String[5];
+                for(int x=0; x < celebritys.size(); x++){
+                    String temp = celebritys.get(x).toString();
+                    celeb_array[x] = temp;
+                }
+                i.putExtra("result", celeb_array);
+                break;
+            }
+        }
+
+        //uz rezultat na sljedeći activity šaljemo i choice da bi znali kako prikazati rezultat
+        i.putExtra("choice", choice);
+        //Convert to byte array -> slanje slike
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        i.putExtra("image",byteArray);
+
+        startActivity(i);
+    }
+/*
+    public  boolean isStoragePermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                return true;
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+                return false;
+            }
+        }
+        else { //permission is automatically granted on sdk<23 upon installation
+            return true;
         }
     }
+
+    private void createFolder() {
+        if (isStoragePermissionGranted()) {
+            File folder = new File(Environment.getExternalStorageDirectory() + File.separator + "DebugData");
+
+            if (!folder.exists()) {
+                folder.mkdir();
+            }
+        }
+    }
+*/
+
 
 
 
@@ -224,13 +247,13 @@ public class UploadPhoto extends AppCompatActivity {
 
         File directory = new File(Environment.getExternalStorageDirectory() + "/Image_Storage");
         if (!directory.exists()) { directory.mkdir(); }
-        File imagefile = new File(directory,"Upload_image.png");
+        File imagefile = new File(directory,"Upload_image.jpg");
         if (imagefile.exists()) { imagefile.delete(); }
         String ImageFilePath = imagefile.toString();
 
         try {
             FileOutputStream out = new FileOutputStream(imagefile);
-            imageToSave.compress(Bitmap.CompressFormat.PNG, 100, out);
+            imageToSave.compress(Bitmap.CompressFormat.JPEG, 100, out);
             out.flush();
             out.close();
         } catch (Exception e) { e.printStackTrace(); }
@@ -271,17 +294,6 @@ public class UploadPhoto extends AppCompatActivity {
 
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             String picturePath = cursor.getString(columnIndex);
-            BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-            bitmap = BitmapFactory.decodeFile(picturePath,bmOptions);
-            Matrix matrix = new Matrix();
-
-            matrix.postRotate(90);
-
-            Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth(), bitmap.getHeight(), true);
-
-            Bitmap rotatedBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
-            ImageFilePath = createDirectoryAndSaveFile(bitmap);
-            System.out.println(ImageFilePath);
             cursor.close();
 
             //imageView = findViewById(R.id.imageView_upload_icon);
