@@ -114,11 +114,11 @@ public class UploadPhoto extends AppCompatActivity {
         //stvaranje python instance
         Python py = Python.getInstance();
         //stvaranje python objekta
-        PyObject upload_image = null;
+        //PyObject upload_image = null;
         PyObject py_obj = null;
 
         try {
-            upload_image = PyObject.fromJava(picture);
+            //upload_image = PyObject.fromJava(picture);
             py_obj = py.getModule(choice);
         }
         catch (Error e){
@@ -131,21 +131,28 @@ public class UploadPhoto extends AppCompatActivity {
         switch (choice){
             case "face_swap":{
                 //int[][][] image_arr = py_obj.callAttr("main", upload_image).toJava(int[][][].class);
-                List<PyObject> obj = py_obj.callAttr("main", upload_image).asList();
-                int res1 = obj.get(0).toJava(int.class);
-                //PyObject object = py_obj.callAttr("main", upload_image).to;
-                //System.out.print("rezz:" + Arrays.deepToString(image_arr[0]));
+                //List<PyObject> obj = py_obj.callAttr("main", upload_image).asList();
+                //int res1 = obj.get(0).toJava(int.class);
 
+                //System.out.print("rezz:" + Arrays.deepToString(image_arr[0]));
                 //int[] image_arr = py_obj.callAttr("main", upload_image).toJava(int[].class);
-                System.out.print(res1);
-                String a = "a";
-                i.putExtra("rezultat", a);
+                //System.out.print(res1);
+
+                //ako su obje slike uspješno učitane
+                if(picture!= null && picture2 != null){
+                    //object se ne koristi za sad
+                    PyObject object = py_obj.callAttr("main", picture, picture2);
+                    String a = "a";
+                    i.putExtra("rezultat", a);
+                }
+
                 break;
             }
 
             case "age_and_gender_detection":{
                 //int[] data = pyobj_age_and_gender.callAttr("main", upload_image).toJava(int[].class);  --> ako želimo slati array
-                String rezultat = py_obj.callAttr("main",ImageFilePath).toString();
+
+                String rezultat = py_obj.callAttr("main",ImageFilePath, picture).toString();
                 i.putExtra("result", rezultat);
                 break;
             }
@@ -168,15 +175,24 @@ public class UploadPhoto extends AppCompatActivity {
             }
         }
 
-        //uz rezultat na sljedeći activity šaljemo i choice da bi znali kako prikazati rezultat
-        i.putExtra("choice", choice);
-        //Convert to byte array -> slanje slike
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
-        i.putExtra("image",byteArray);
+        //tu staviti try-catch?
+        if(choice != "face_swap"){
 
-        startActivity(i);
+            //uz rezultat na sljedeći activity šaljemo i choice da bi znali kako prikazati rezultat
+            i.putExtra("choice", choice);
+            //Convert to byte array -> slanje slike
+            i.putExtra("image",picture);
+
+            startActivity(i);
+        }
+        else if(choice == "face_swap" && picture!= null && picture2 != null){
+            startActivity(i);
+        }
+        else if(picture!= null && picture2 ==null){
+            System.out.print("tu ide logika za uzimanej druge slike ");
+        }
+
+
     }
 /*
     public  boolean isStoragePermissionGranted() {
@@ -270,12 +286,12 @@ public class UploadPhoto extends AppCompatActivity {
             ImageFilePath = createDirectoryAndSaveFile(bitmap);
 
             //Konvertiranje u byte array
-            //ByteArrayOutputStream stream = null;
-            //stream = new ByteArrayOutputStream();
-            //bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            //picture = stream.toByteArray();
+            ByteArrayOutputStream stream = null;
+            stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            picture = stream.toByteArray();
 
-            //cudan uvjet? kako ako nije null, ?
+            //cudan uvjet? kako ako nije null, ? ali radi
             if(imageView!=null){
                 imageView.setImageBitmap(bitmap);
                 //Promijeni tekstualne upute ispod slike
@@ -305,6 +321,13 @@ public class UploadPhoto extends AppCompatActivity {
             imageView.setDrawingCacheEnabled(true);
             bitmap = imageView.getDrawingCache();
             ImageFilePath = createDirectoryAndSaveFile(bitmap);
+
+            //Konvertiranje u byte array za 2. način obrade
+            ByteArrayOutputStream stream = null;
+            stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            picture = stream.toByteArray();
+            System.out.print(picture.toString());
         }
 
     }

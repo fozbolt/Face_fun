@@ -50,24 +50,20 @@ public class ResultPage extends AppCompatActivity {
 
         choice = i.getExtras().getString("choice");
 
+        System.out.println("tu samtest");
         byte[] byteArray = getIntent().getByteArrayExtra("image");
         bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
         ImageView im = findViewById(R.id.resultPic);
         im.setImageBitmap(bitmap);
+        System.out.println("tu samtest2");
 
-        if(choice.equals("age_and_gender_detection")){
+        if(choice.equals("age_and_gender_detection")  || choice.equals("celebrity_face_recognition")){
             String result;
             result = i.getExtras().getString("result");
             TextView txtView= findViewById(R.id.resultText);
             txtView.setText(result);
         }
 
-        if(choice.equals("celebrity_face_recognition")){
-            String result;
-            result = i.getExtras().getString("result");
-            TextView txtView= findViewById(R.id.resultText);
-            txtView.setText(result);
-        }
 
         if(choice.equals("celebrity_look_alike")){
             String [] result;
