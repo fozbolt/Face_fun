@@ -50,10 +50,12 @@ public class ResultPage extends AppCompatActivity {
 
         choice = i.getExtras().getString("choice");
 
+        System.out.println("tu samtest");
         byte[] byteArray = getIntent().getByteArrayExtra("image");
         bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
         ImageView im = findViewById(R.id.resultPic);
         im.setImageBitmap(bitmap);
+        System.out.println("tu samtest2");
 
         if(choice.equals("age_and_gender_detection")){
             String result;

@@ -4,7 +4,7 @@ from os.path import dirname, join
 import dlib
 import time
 
-def main(slika):
+def main(byteArr1, byteArr2):
     sl1 = join(dirname(__file__), "marin.jpg")
     sl2 = join(dirname(__file__), "bradley_cooper.jpg")
 
