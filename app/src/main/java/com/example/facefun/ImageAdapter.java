@@ -23,7 +23,8 @@ public class ImageAdapter extends BaseAdapter {
         File directory = new File(Environment.getExternalStorageDirectory() + "/gallery_images");
         String directory_path = directory.toString();
         File f = new File(directory_path);
-        try { list = context.getAssets().list("Gallery_images"); }
+        File imageFiles[] = f.listFiles();
+        try { list = context.getAssets().list("Gallery_images"); System.out.println(c); System.out.println(context); System.out.println("Radi");  }
         catch (IOException e) { e.printStackTrace(); }
     }
 
@@ -46,6 +47,8 @@ public class ImageAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         ImageView img = new ImageView(context);
+        System.out.println(img);
+        System.out.println("dobro");
         img.setScaleType(ImageView.ScaleType.FIT_XY);
         img.setRotation(90);
         img.setLayoutParams(new GridView.LayoutParams(240,240));

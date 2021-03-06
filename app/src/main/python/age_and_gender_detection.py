@@ -2,6 +2,7 @@ import numpy as np
 import tensorflow as tf
 import cv2
 from face_cropper import crop
+from face_cropper.exceptions import NoFaceException, AboveThresholdException
 from os.path import dirname, join
 from PIL import Image
 
@@ -34,16 +35,8 @@ def main(ImageFilePath):
 
     #paket face-cropper
 
-    cropped_image = crop(
-        image_path = ImageFilePath,
-    )
-
-
-    if cropped_image==None:
-        raise Exception('Image format unknown')
-
-    else:
-
+    try:
+        cropped_image = crop(image_path = ImageFilePath,)
         #PIL format u cv2
         imcv = cv2.cvtColor(np.array(cropped_image, dtype='uint8'), cv2.COLOR_RGB2BGR)
 
@@ -65,4 +58,8 @@ def main(ImageFilePath):
         #result = [age,gender]
         result = "Age: " + str(age) + "  Gender: " + str(gender_f[gender])
 
-    return result
+        return result
+
+
+    except(NoFaceException,AboveThresholdException):
+        return "Molim vas unesite bolju sliku."

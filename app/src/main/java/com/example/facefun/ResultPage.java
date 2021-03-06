@@ -73,20 +73,27 @@ public class ResultPage extends AppCompatActivity {
             String [] result;
             result = i.getExtras().getStringArray("result");
 
+            if(result[0] == null){
+                TextView txtView = findViewById(R.id.resultText);
+                String newResult = "Molim vas unesite bolju sliku.";
+                txtView.setText(newResult);
+            }
 
-            TextView txtView= findViewById(R.id.resultText);
-            //ne funkcionira s replaceAll zbog "["
-            String res = Arrays.toString(result);
-            String strNew = res.replace("b'", "");
-            strNew = strNew.replace("[", "");
-            strNew = strNew.replace("]", "");
-            strNew = strNew.replace("'", "");
-            String[] parts = strNew.split(",");
+            else {
+                TextView txtView = findViewById(R.id.resultText);
+                //ne funkcionira s replaceAll zbog "["
+                String res = Arrays.toString(result);
+                String strNew = res.replace("b'", "");
+                strNew = strNew.replace("[", "");
+                strNew = strNew.replace("]", "");
+                strNew = strNew.replace("'", "");
+                String[] parts = strNew.split(",");
 
 
-            System.out.print("rezz:" + parts[0]);
-            String rez = "1. " + parts[0] + "\n" + "2. " + parts[1] + "\n" + "3. " + parts[2] + "\n" + "4. " + parts[3] + "\n" + "5. " + parts[4];
-            txtView.setText(rez);
+                System.out.print("rezz:" + parts[0]);
+                String rez = "1. " + parts[0] + "\n" + "2. " + parts[1] + "\n" + "3. " + parts[2] + "\n" + "4. " + parts[3] + "\n" + "5. " + parts[4];
+                txtView.setText(rez);
+            }
         }
         if(choice.equals("age_and_gender_detection")){
             String result;

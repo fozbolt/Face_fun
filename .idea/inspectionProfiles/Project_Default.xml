@@ -27,6 +27,7 @@
           <option value="src.main.python.celebrity_look_alike.keras_vggface" />
           <option value="src.main.python.celebrity_look_alike.face_cropper" />
           <option value="src.main.python.celebrity_face_recognition.face_cropper" />
+          <option value="src.main.python.age_and_gender_detection.PIL" />
         </list>
       </option>
     </inspection_tool>
