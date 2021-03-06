@@ -9,7 +9,7 @@ from keras_vggface.utils import decode_predictions
 def main(ImageFilePath):
     #filepathImage = join(dirname(__file__), "johnny_depp.jpg")
     cropped_image=None
-    print(ImageFilePath)
+
     cropped_image = crop(
         image_path = ImageFilePath,
     )
