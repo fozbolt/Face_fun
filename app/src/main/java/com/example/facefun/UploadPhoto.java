@@ -44,6 +44,7 @@ public class UploadPhoto extends AppCompatActivity {
     private static final int TAKE_PICTURE_REQUEST = 2;
     public  static final int PERMISSION_CODE_REQUEST  = 3 ;
     String ImageFilePath;
+    String ImageFilePath2;
     public byte[] picture;
     int proba = 0;
     public byte[] picture2;
@@ -137,13 +138,15 @@ public class UploadPhoto extends AppCompatActivity {
                 //System.out.print("rezz:" + Arrays.deepToString(image_arr[0]));
                 //int[] image_arr = py_obj.callAttr("main", upload_image).toJava(int[].class);
                 //System.out.print(res1);
+                System.out.println("u faceswapu sam");
 
                 //ako su obje slike uspješno učitane
                 if(picture!= null && picture2 != null){
+                    System.out.println("u faceswap ifu sam");
                     //object se ne koristi za sad
-                    PyObject object = py_obj.callAttr("main", picture, picture2);
+                    PyObject object = py_obj.callAttr("main", picture, picture2, ImageFilePath, ImageFilePath2);
                     String a = "a";
-                    i.putExtra("rezultat", a);
+                    i.putExtra("result", a);
                 }
 
                 break;
@@ -154,6 +157,7 @@ public class UploadPhoto extends AppCompatActivity {
 
                 String rezultat = py_obj.callAttr("main",ImageFilePath, picture).toString();
                 i.putExtra("result", rezultat);
+
                 break;
             }
 
@@ -175,23 +179,57 @@ public class UploadPhoto extends AppCompatActivity {
             }
         }
 
-        //tu staviti try-catch?
-        if(choice != "face_swap"){
+        /*
+        //ispisi za testiranje
+        System.out.println("nakon switcha sam dosao tu");
+        if(picture != null){
+            if(choice.equals("face_swap")){
+                System.out.println("Prva slika je ok");
+            }else{
+                System.out.println("samo sam tu");
+            }
+            if(picture2==null){
+                System.out.println("pic2 == null");
+            }
 
+        }
+
+         */
+
+        //tu staviti try-catch?
+        if(!choice.equals("face_swap")){
+            System.out.println(choice);
             //uz rezultat na sljedeći activity šaljemo i choice da bi znali kako prikazati rezultat
             i.putExtra("choice", choice);
             //Convert to byte array -> slanje slike
             i.putExtra("image",picture);
+            System.out.println("testc");
+            picture = null;
+            ImageFilePath = null;
 
             startActivity(i);
         }
-        else if(choice == "face_swap" && picture!= null && picture2 != null){
+
+        else if(choice.equals("face_swap") && picture!= null && picture2 != null){
+            System.out.println("choice: " + choice);
+            System.out.println("tutututu");
+            i.putExtra("image",picture);
+            i.putExtra("choice", choice);
+            picture = null;
+            ImageFilePath = null;
             startActivity(i);
         }
         else if(picture!= null && picture2 ==null){
             System.out.print("tu ide logika za uzimanej druge slike ");
+            TextView txt = (TextView) findViewById(R.id.resultText);
+            txt.setText(this.getString(R.string.upload_message_face_swap2_before));
+            imageView.setImageResource(R.drawable.upload_image_icon);
+        }
+        else{
+            System.out.println("U elsu sam");
         }
 
+        System.out.println("Dosao sam do kraja i obrisao sam temp fileove");
 
     }
 /*
@@ -259,10 +297,13 @@ public class UploadPhoto extends AppCompatActivity {
     }
 
     private String createDirectoryAndSaveFile(Bitmap imageToSave) {
-
+        File imagefile;
         File directory = new File(Environment.getExternalStorageDirectory() + "/Image_Storage");
         if (!directory.exists()) { directory.mkdir(); }
-        File imagefile = new File(directory,"Upload_image.png");
+
+        if(ImageFilePath == null) imagefile= new File(directory,"Upload_image.png");
+        else imagefile= new File(directory,"Upload_image2.png");
+
         if (imagefile.exists()) { imagefile.delete(); }
         String ImageFilePath = imagefile.toString();
 
@@ -283,13 +324,18 @@ public class UploadPhoto extends AppCompatActivity {
 
         if (requestCode == TAKE_PICTURE_REQUEST && resultCode == RESULT_OK){
             bitmap = (Bitmap) data.getExtras().get("data");
-            ImageFilePath = createDirectoryAndSaveFile(bitmap);
+
+            if(ImageFilePath == null) ImageFilePath = createDirectoryAndSaveFile(bitmap);
+            else ImageFilePath2  = createDirectoryAndSaveFile(bitmap);
 
             //Konvertiranje u byte array
             ByteArrayOutputStream stream = null;
             stream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            picture = stream.toByteArray();
+
+            if(picture == null) picture = stream.toByteArray();
+            else picture2 = stream.toByteArray();
+
 
             //cudan uvjet? kako ako nije null, ? ali radi
             if(imageView!=null){
@@ -320,14 +366,18 @@ public class UploadPhoto extends AppCompatActivity {
 
             imageView.setDrawingCacheEnabled(true);
             bitmap = imageView.getDrawingCache();
-            ImageFilePath = createDirectoryAndSaveFile(bitmap);
+
+
+            if(ImageFilePath == null) ImageFilePath = createDirectoryAndSaveFile(bitmap);
+            else ImageFilePath2 = createDirectoryAndSaveFile(bitmap);
 
             //Konvertiranje u byte array za 2. način obrade
             ByteArrayOutputStream stream = null;
             stream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            picture = stream.toByteArray();
-            System.out.print(picture.toString());
+
+            if(picture == null) picture = stream.toByteArray();
+            else picture2 = stream.toByteArray();
         }
 
     }

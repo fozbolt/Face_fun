@@ -27,18 +27,21 @@ def main(ImageFilePath, byteArr):
         print('Error with loading model')
 
 
-    #img_path = join(dirname(__file__), "marin.jpg")
+    #img_path = join(dirname(__file__), "slika.jpg")
     #print(slika)
     #img = cv2.imread(byteArr)
-    img = np.array(byteArr, dtype='uint8')
+    #img = np.array(byteArr, dtype='uint8')
     #print("dobro",img)
 
     #paket face-cropper
 
     try:
-        cropped_image = crop(image_path = ImageFilePath,)
-        #PIL format u cv2
-        imcv = cv2.cvtColor(np.array(img, dtype='uint8'), cv2.COLOR_RGB2BGR)
+        ##photo from path (gallery or camera)
+        #cropped_image = crop(image_path = ImageFilePath)
+        #imcv = cv2.cvtColor(np.array(cropped_image, dtype='uint8'), cv2.COLOR_RGB2BGR)
+
+        ##photo from byteArray (gallery or camera)
+        imcv = cv2.cvtColor(np.array(byteArr, dtype='uint8'), cv2.COLOR_RGB2BGR)
 
         #podesavanje u prikladan format za fittanje na model
         img_resized = cv2.resize(imcv,(48,48))

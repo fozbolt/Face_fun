@@ -4,16 +4,24 @@ from os.path import dirname, join
 import dlib
 import time
 
-def main(byteArr1, byteArr2):
-    sl1 = join(dirname(__file__), "marin.jpg")
-    sl2 = join(dirname(__file__), "bradley_cooper.jpg")
+def main(byteArr1, byteArr2, ImageFilePath, ImageFilePath2):
 
-    img = cv2.imread(sl1)
+    print(ImageFilePath) #upload_image.png
+    print(ImageFilePath2) #upload_image.png
+
+    #photo from byteArr
+    img_gray = cv2.cvtColor(np.array(byteArr1, dtype='uint8'), cv2.COLOR_BGR2GRAY)
+    img2_gray = cv2.cvtColor(np.array(byteArr2, dtype='uint8'), cv2.COLOR_BGR2GRAY)
+
+
+    #photo from parh (camera or gallery)
+    """"""""""
+    img = cv2.imread(ImageFilePath)
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     mask = np.zeros_like(img_gray)
-    img2 = cv2.imread(sl2)
+    img2 = cv2.imread(ImageFilePath2)
     img2_gray = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
-
+    """""""""
 
     def extract_index_nparray(nparray):
         index = None
@@ -33,6 +41,7 @@ def main(byteArr1, byteArr2):
 
 
     # Face 1
+    triangles = []
     faces = detector(img_gray)
     for face in faces:
         landmarks = predictor(img_gray, face)
@@ -82,6 +91,7 @@ def main(byteArr1, byteArr2):
 
     # Face 2
     faces2 = detector(img2_gray)
+    convexhull2 = None
     for face in faces2:
         landmarks = predictor(img2_gray, face)
         landmarks_points2 = []
@@ -94,8 +104,8 @@ def main(byteArr1, byteArr2):
         points2 = np.array(landmarks_points2, np.int32)
         convexhull2 = cv2.convexHull(points2)
 
-        lines_space_mask = np.zeros_like(img_gray)
-        lines_space_new_face = np.zeros_like(img2)
+        lines_space_mask = np.zeros_like(img_gray, dtype='uint8')
+        lines_space_new_face = np.zeros_like(img2, dtype='uint8')
         # Triangulation of both faces
         for triangle_index in indexes_triangles:
             #Triangulation of the first face
@@ -161,7 +171,7 @@ def main(byteArr1, byteArr2):
 
     # Face swapped (putting 1st face into 2nd face)
     img2_face_mask = np.zeros_like(img2_gray)
-    img2_head_mask = cv2.fillConvexPoly(img2_face_mask, convexhull2, 255)
+    img2_head_mask = cv2.fillConvexPoly(img2_face_mask, convexhull2,  255)
     img2_face_mask = cv2.bitwise_not(img2_head_mask)
 
 
@@ -174,6 +184,7 @@ def main(byteArr1, byteArr2):
     seamlessclone = cv2.seamlessClone(result, img2, img2_head_mask, center_face2, cv2.NORMAL_CLONE)
 
     #cv2.imwrite("abcdkristiajnc.jpg",seamlessclone)
+
     print('success')
     #cv2.waitKey(0)
 

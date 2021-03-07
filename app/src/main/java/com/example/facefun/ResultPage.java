@@ -57,7 +57,16 @@ public class ResultPage extends AppCompatActivity {
         im.setImageBitmap(bitmap);
         System.out.println("tu samtest2");
 
-        if(choice.equals("age_and_gender_detection")  || choice.equals("celebrity_face_recognition")){
+        if(choice.equals("face_swap")){
+            String result;
+            result = i.getExtras().getString("result");
+
+            TextView txtView= findViewById(R.id.resultText);
+
+            txtView.setText(result);
+        }
+
+        else if(choice.equals("age_and_gender_detection")  || choice.equals("celebrity_face_recognition")){
             String result;
             result = i.getExtras().getString("result");
             TextView txtView= findViewById(R.id.resultText);
@@ -65,7 +74,7 @@ public class ResultPage extends AppCompatActivity {
         }
 
 
-        if(choice.equals("celebrity_look_alike")){
+        else if(choice.equals("celebrity_look_alike")){
             String [] result;
             result = i.getExtras().getStringArray("result");
 
@@ -91,14 +100,7 @@ public class ResultPage extends AppCompatActivity {
                 txtView.setText(rez);
             }
         }
-        if(choice.equals("age_and_gender_detection")){
-            String result;
-            result = i.getExtras().getString("result");
 
-            TextView txtView= findViewById(R.id.resultText);
-
-            txtView.setText(result);
-        }
     }
 
     public void goBack(View v){
