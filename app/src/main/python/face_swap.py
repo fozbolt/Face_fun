@@ -2,7 +2,10 @@ import numpy as np
 import cv2
 from os.path import dirname, join
 import dlib
-import time
+from PIL import Image
+import base64
+import io
+
 
 def main(byteArr1, byteArr2, ImageFilePath, ImageFilePath2):
 
@@ -185,11 +188,17 @@ def main(byteArr1, byteArr2, ImageFilePath, ImageFilePath2):
 
     #cv2.imwrite("abcdkristiajnc.jpg",seamlessclone)
 
+    #logika za pretvorbu
+    seamlessclone2 = cv2.cvtColor(seamlessclone, cv2.COLOR_BGR2RGB)
+    pil_im = Image.fromarray(seamlessclone2)
+    buff = io.BytesIO()
+    pil_im.save(buff, format="PNG")
+    img_str = base64.b64encode(buff.getvalue())
+
     print('success')
     #cv2.waitKey(0)
 
     #cv2.destroyAllWindows()
     #a.tolist()
-    arr = np.array([1, 2, 3, 4, 5])
-    arr = arr.astype(np.int64)
-    return arr
+
+    return ""+str(img_str, 'utf-8')

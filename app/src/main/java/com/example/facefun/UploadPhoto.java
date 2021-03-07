@@ -20,6 +20,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -145,8 +146,11 @@ public class UploadPhoto extends AppCompatActivity {
                     System.out.println("u faceswap ifu sam");
                     //object se ne koristi za sad
                     PyObject object = py_obj.callAttr("main", picture, picture2, ImageFilePath, ImageFilePath2);
-                    String a = "a";
-                    i.putExtra("result", a);
+                    String str = object.toString();
+                    byte data[] = android.util.Base64.decode(str, Base64.DEFAULT);
+
+                    i.putExtra("image",data);
+                    i.putExtra("result", "You can save result image or try again");
                 }
 
                 break;
@@ -213,7 +217,7 @@ public class UploadPhoto extends AppCompatActivity {
         else if(choice.equals("face_swap") && picture!= null && picture2 != null){
             System.out.println("choice: " + choice);
             System.out.println("tutututu");
-            i.putExtra("image",picture);
+
             i.putExtra("choice", choice);
             picture = null;
             ImageFilePath = null;
