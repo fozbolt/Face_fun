@@ -10,18 +10,18 @@ def main(byteArr1, byteArr2, ImageFilePath, ImageFilePath2):
     print(ImageFilePath2) #upload_image.png
 
     #photo from byteArr
-    img_gray = cv2.cvtColor(np.array(byteArr1, dtype='uint8'), cv2.COLOR_BGR2GRAY)
-    img2_gray = cv2.cvtColor(np.array(byteArr2, dtype='uint8'), cv2.COLOR_BGR2GRAY)
+    #img_gray = cv2.cvtColor(np.array(byteArr1, dtype='uint8'), cv2.COLOR_BGR2GRAY)
+    #img2_gray = cv2.cvtColor(np.array(byteArr2, dtype='uint8'), cv2.COLOR_BGR2GRAY)
 
 
-    #photo from parh (camera or gallery)
-    """"""""""
+    #photo from path (camera or gallery)
+
     img = cv2.imread(ImageFilePath)
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     mask = np.zeros_like(img_gray)
     img2 = cv2.imread(ImageFilePath2)
     img2_gray = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
-    """""""""
+
 
     def extract_index_nparray(nparray):
         index = None
