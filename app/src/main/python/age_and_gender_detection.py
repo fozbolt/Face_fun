@@ -32,11 +32,11 @@ def main(ImageFilePath, byteArr):
 
     try:
         ##photo from path (gallery or camera)
-        #cropped_image = crop(image_path = ImageFilePath)
-        #imcv = cv2.cvtColor(np.array(cropped_image, dtype='uint8'), cv2.COLOR_RGB2BGR)
+        cropped_image = crop(image_path = ImageFilePath)
+        imcv = cv2.cvtColor(np.array(cropped_image, dtype='uint8'), cv2.COLOR_RGB2BGR)
 
         ##photo from byteArray (gallery or camera)
-        imcv = cv2.cvtColor(np.array(byteArr, dtype='uint8'), cv2.COLOR_RGB2BGR)
+        #imcv = cv2.cvtColor(np.array(byteArr, dtype='uint8'), cv2.COLOR_RGB2BGR)
 
         #podesavanje u prikladan format za fittanje na model
         img_resized = cv2.resize(imcv,(48,48))
