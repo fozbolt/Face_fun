@@ -9,7 +9,6 @@ from os.path import dirname, join
 def main(ImageFilePath):
 
     model_Celebritys =["Adriana Lima","Alex Lawther","Alexandra Daddario","Alvaro Morte","Ben Affleck","Bill Gates","Brian J. Smith","Chris Evans","Chris Hemsworth","Chris Pratt","Cristiano Ronaldo","Emilia Clarke","Emma Watson","Henry Cavil","Jason Momoa","Jennifer Lawrence","Johnny Depp","Josh Radnor","Leonardo DiCaprio","Madelaine Petsch","Megan Fox","Miley Cyrus","Morgan Freeman","Rihanna","Rober De Niro","Selena Gomez","Tom Cruise","Zac Efron","Barack Obama","Barbara Palvin","Camila Mendes","Ellen Page","Elon Musk","Kiernen Shipka","Scarlett Johansson"]
-    #filepathImage = join(dirname(__file__), "leonardo_dicaprio.jpg")
     filepathModel = join(dirname(__file__), "Celeb_FR.h5")
 
     loaded_model = tf.keras.models.load_model(filepathModel)

@@ -37,7 +37,6 @@ import java.util.regex.Pattern;
 
 
 public class ResultPage extends AppCompatActivity {
-    Button save;
     Bitmap bitmap;
     String choice;
 
@@ -50,19 +49,17 @@ public class ResultPage extends AppCompatActivity {
 
         choice = i.getExtras().getString("choice");
 
-        System.out.println("tu samtest");
         byte[] byteArray = getIntent().getByteArrayExtra("image");
         bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
         ImageView im = findViewById(R.id.resultPic);
         im.setImageBitmap(bitmap);
-        System.out.println("tu samtest2");
+
 
         if(choice.equals("face_swap")){
             String result;
             result = i.getExtras().getString("result");
 
             TextView txtView= findViewById(R.id.resultText);
-
             txtView.setText(result);
         }
 
@@ -80,7 +77,7 @@ public class ResultPage extends AppCompatActivity {
 
             if(result[0] == null){
                 TextView txtView = findViewById(R.id.resultText);
-                String newResult = "Molim vas unesite bolju sliku.";
+                String newResult = "Please upload better picture.";
                 txtView.setText(newResult);
             }
 
@@ -110,9 +107,8 @@ public class ResultPage extends AppCompatActivity {
 
     //spremanje obrađene slike na mobitel
     public void saveImage(View v){
-        //ovo promijeniti u obradenu sliku kada spojimo
-        ImageView iv = (ImageView)findViewById(R.id.resultPic);
 
+        ImageView iv = (ImageView)findViewById(R.id.resultPic);
 
         iv.buildDrawingCache();
         Bitmap bmp = iv.getDrawingCache();

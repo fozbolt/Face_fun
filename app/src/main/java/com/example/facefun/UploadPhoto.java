@@ -44,19 +44,16 @@ public class UploadPhoto extends AppCompatActivity {
     public static final int  LOAD_IMAGE_REQUEST = 1;
     private static final int TAKE_PICTURE_REQUEST = 2;
     public  static final int PERMISSION_CODE_REQUEST  = 3 ;
+    public byte[] picture;
+    public byte[] picture2;
     String ImageFilePath;
     String ImageFilePath2;
-    public byte[] picture;
-    int proba = 0;
-    public byte[] picture2;
-    public int[] pic_arr;
     ImageButton imageButton ;
     ImageView imageView ;
     Bitmap bitmap;
     Intent intent ;
     Intent i;
     String choice;
-    private static final int PERMISSION_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,10 +67,9 @@ public class UploadPhoto extends AppCompatActivity {
         choice = activity;
 
         if (activity.equals("face_swap")){
-            //promijeniti WarningMessage u nešto blaže
+
             TextView txt = (TextView) findViewById(R.id.resultText);
             txt.setText(this.getString(R.string.upload_message_face_swap_before));
-
         }
 
         //API za učitavanje slike iz galerije
@@ -116,11 +112,9 @@ public class UploadPhoto extends AppCompatActivity {
         //stvaranje python instance
         Python py = Python.getInstance();
         //stvaranje python objekta
-        //PyObject upload_image = null;
         PyObject py_obj = null;
 
         try {
-            //upload_image = PyObject.fromJava(picture);
             py_obj = py.getModule(choice);
         }
         catch (Error e){
@@ -132,19 +126,10 @@ public class UploadPhoto extends AppCompatActivity {
 
         switch (choice){
             case "face_swap":{
-                //int[][][] image_arr = py_obj.callAttr("main", upload_image).toJava(int[][][].class);
-                //List<PyObject> obj = py_obj.callAttr("main", upload_image).asList();
-                //int res1 = obj.get(0).toJava(int.class);
-
-                //System.out.print("rezz:" + Arrays.deepToString(image_arr[0]));
-                //int[] image_arr = py_obj.callAttr("main", upload_image).toJava(int[].class);
-                //System.out.print(res1);
-                System.out.println("u faceswapu sam");
 
                 //ako su obje slike uspješno učitane
                 if(picture!= null && picture2 != null){
-                    System.out.println("u faceswap ifu sam");
-                    //object se ne koristi za sad
+
                     PyObject object = py_obj.callAttr("main", picture, picture2, ImageFilePath, ImageFilePath2);
                     String str = object.toString();
                     byte data[] = android.util.Base64.decode(str, Base64.DEFAULT);
@@ -159,8 +144,8 @@ public class UploadPhoto extends AppCompatActivity {
             case "age_and_gender_detection":{
                 //int[] data = pyobj_age_and_gender.callAttr("main", upload_image).toJava(int[].class);  --> ako želimo slati array
 
-                String rezultat = py_obj.callAttr("main",ImageFilePath, picture).toString();
-                i.putExtra("result", rezultat);
+                String result = py_obj.callAttr("main",ImageFilePath, picture).toString();
+                i.putExtra("result", result);
 
                 break;
             }
@@ -183,31 +168,14 @@ public class UploadPhoto extends AppCompatActivity {
             }
         }
 
-        /*
-        //ispisi za testiranje
-        System.out.println("nakon switcha sam dosao tu");
-        if(picture != null){
-            if(choice.equals("face_swap")){
-                System.out.println("Prva slika je ok");
-            }else{
-                System.out.println("samo sam tu");
-            }
-            if(picture2==null){
-                System.out.println("pic2 == null");
-            }
 
-        }
-
-         */
-
-        //tu staviti try-catch?
         if(!choice.equals("face_swap")){
-            System.out.println(choice);
+
             //uz rezultat na sljedeći activity šaljemo i choice da bi znali kako prikazati rezultat
             i.putExtra("choice", choice);
             //Convert to byte array -> slanje slike
             i.putExtra("image",picture);
-            System.out.println("testc");
+
             picture = null;
             ImageFilePath = null;
 
@@ -215,8 +183,6 @@ public class UploadPhoto extends AppCompatActivity {
         }
 
         else if(choice.equals("face_swap") && picture!= null && picture2 != null){
-            System.out.println("choice: " + choice);
-            System.out.println("tutututu");
 
             i.putExtra("choice", choice);
             picture = null;
@@ -224,18 +190,17 @@ public class UploadPhoto extends AppCompatActivity {
             startActivity(i);
         }
         else if(picture!= null && picture2 ==null){
-            System.out.print("tu ide logika za uzimanej druge slike ");
+
             TextView txt = (TextView) findViewById(R.id.resultText);
             txt.setText(this.getString(R.string.upload_message_face_swap2_before));
             imageView.setImageResource(R.drawable.upload_image_icon);
         }
         else{
-            System.out.println("U elsu sam");
+            System.out.println("Unknown error");
         }
 
-        System.out.println("Dosao sam do kraja i obrisao sam temp fileove");
-
     }
+
 /*
     public  boolean isStoragePermissionGranted() {
         if (Build.VERSION.SDK_INT >= 23) {
@@ -341,10 +306,9 @@ public class UploadPhoto extends AppCompatActivity {
             else picture2 = stream.toByteArray();
 
 
-            //cudan uvjet? kako ako nije null, ? ali radi
             if(imageView!=null){
                 imageView.setImageBitmap(bitmap);
-                //Promijeni tekstualne upute ispod slike
+
                 TextView text = (TextView) findViewById(R.id.resultText);
                 text.setText(this.getString(R.string.upload_message_face_swap_after));
             }

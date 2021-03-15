@@ -4,7 +4,9 @@ import cv2
 from face_cropper import crop
 from face_cropper.exceptions import NoFaceException, AboveThresholdException
 from os.path import dirname, join
-from PIL import Image
+
+
+#https://pysource.com/2019/04/04/face-swapping-opencv-with-python-part-1/
 
 def main(ImageFilePath, byteArr):
 
@@ -20,20 +22,13 @@ def main(ImageFilePath, byteArr):
         loaded_model = tf.keras.models.load_model(dir)
 
         #print(loaded_model.summary())
-
         print('Model loaded successfully')
 
     except:
         print('Error with loading model')
 
 
-    #img_path = join(dirname(__file__), "slika.jpg")
-    #print(slika)
-    #img = cv2.imread(byteArr)
-    #img = np.array(byteArr, dtype='uint8')
-    #print("dobro",img)
 
-    #paket face-cropper
 
     try:
         ##photo from path (gallery or camera)
@@ -65,4 +60,4 @@ def main(ImageFilePath, byteArr):
 
 
     except(NoFaceException,AboveThresholdException):
-        return "Molim vas unesite bolju sliku."
+        return "Please upload better picture"

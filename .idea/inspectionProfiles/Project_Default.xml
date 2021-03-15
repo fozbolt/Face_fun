@@ -1,6 +1,10 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
+    <inspection_tool class="ConstantConditions" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="SUGGEST_NULLABLE_ANNOTATIONS" value="false" />
+      <option name="DONT_REPORT_TRUE_ASSERT_STATEMENTS" value="false" />
+    </inspection_tool>
     <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredIdentifiers">
         <list>
@@ -28,6 +32,15 @@
           <option value="src.main.python.celebrity_look_alike.face_cropper" />
           <option value="src.main.python.celebrity_face_recognition.face_cropper" />
           <option value="src.main.python.age_and_gender_detection.PIL" />
+          <option value="dlib" />
+          <option value="src.main.python.face_swap.PIL" />
+          <option value="base64" />
+          <option value="io" />
+          <option value="src.main.python.face_swap.os" />
+          <option value="src.main.python.face_swap.range" />
+          <option value="src.main.python.face_swap.print" />
+          <option value="src.main.python.face_swap.str" />
+          <option value="src.main.python.face_swap.int" />
         </list>
       </option>
     </inspection_tool>

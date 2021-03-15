@@ -7,10 +7,12 @@ import base64
 import io
 
 
+#https://github.com/matthewearl/faceswap/blob/master/faceswap.py
+
 def main(byteArr1, byteArr2, ImageFilePath, ImageFilePath2):
 
-    print(ImageFilePath) #upload_image.png
-    print(ImageFilePath2) #upload_image.png
+    #print(ImageFilePath) #upload_image.png
+    #print(ImageFilePath2) #upload_image2.png
 
     #photo from byteArr
     #img_gray = cv2.cvtColor(np.array(byteArr1, dtype='uint8'), cv2.COLOR_BGR2GRAY)
@@ -186,19 +188,15 @@ def main(byteArr1, byteArr2, ImageFilePath, ImageFilePath2):
 
     seamlessclone = cv2.seamlessClone(result, img2, img2_head_mask, center_face2, cv2.NORMAL_CLONE)
 
-    #cv2.imwrite("abcdkristiajnc.jpg",seamlessclone)
 
-    #logika za pretvorbu
-    seamlessclone2 = cv2.cvtColor(seamlessclone, cv2.COLOR_BGR2RGB)
-    pil_im = Image.fromarray(seamlessclone2)
+    #logika za pretvorbu -> https://www.youtube.com/watch?v=gHrfPuT4qDE
+    result = cv2.cvtColor(seamlessclone, cv2.COLOR_BGR2RGB)
+    pil_im = Image.fromarray(result)
     buff = io.BytesIO()
     pil_im.save(buff, format="PNG")
     img_str = base64.b64encode(buff.getvalue())
 
     print('success')
-    #cv2.waitKey(0)
 
-    #cv2.destroyAllWindows()
-    #a.tolist()
 
     return ""+str(img_str, 'utf-8')

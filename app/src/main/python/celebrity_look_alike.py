@@ -8,7 +8,7 @@ from keras_vggface.utils import preprocess_input
 from keras_vggface.utils import decode_predictions
 
 def main(ImageFilePath):
-    #filepathImage = join(dirname(__file__), "johnny_depp.jpg")
+
     cropped_image=None
 
     try:
