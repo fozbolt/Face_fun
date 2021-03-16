@@ -24,7 +24,7 @@
     <string name="title_celeb_fr">Celeb face recognition</string>
     <string name="title_celeb_lookalike">Your celeb look alike</string>
     <string name="title_gallery">Gallery</string>
-    <string name="test_text">Opis ove slike ide ovdje nesto kratkog tolko da je</string>
+    <string name="test_text">Lorem ipsum dolor sit amet, consectetur adipiscing</string>
     <string name="upload_warning_message">Image upload failed. Something is wrong with image.</string>
     <string name="gallery">Gallery</string>
     <string name="favorites">My Favorites</string>

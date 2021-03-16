@@ -142,8 +142,6 @@ public class UploadPhoto extends AppCompatActivity {
             }
 
             case "age_and_gender_detection":{
-                //int[] data = pyobj_age_and_gender.callAttr("main", upload_image).toJava(int[].class);  --> ako želimo slati array
-
                 String result = py_obj.callAttr("main",ImageFilePath, picture).toString();
                 i.putExtra("result", result);
 
