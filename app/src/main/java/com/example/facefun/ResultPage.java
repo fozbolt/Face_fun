@@ -55,7 +55,7 @@ public class ResultPage extends AppCompatActivity {
         im.setImageBitmap(bitmap);
 
 
-        if(choice.equals("face_swap")){
+        if(!choice.equals("celebrity_look_alike")){
             String result;
             result = i.getExtras().getString("result");
 
@@ -63,15 +63,8 @@ public class ResultPage extends AppCompatActivity {
             txtView.setText(result);
         }
 
-        else if(choice.equals("age_and_gender_detection")  || choice.equals("celebrity_face_recognition")){
-            String result;
-            result = i.getExtras().getString("result");
-            TextView txtView= findViewById(R.id.resultText);
-            txtView.setText(result);
-        }
 
-
-        else if(choice.equals("celebrity_look_alike")){
+        else{
             String [] result;
             result = i.getExtras().getStringArray("result");
 
